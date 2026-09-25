@@ -98,7 +98,22 @@ a:hover { color: var(--brand); }
 .hdr-logo { display: inline-flex; align-items: center; }
 .hdr-logo img { width: 232px; display: block; }
 
-.nav { display: flex; align-items: center; gap: 1.5rem; }
+/* The bar splits the way copper.com's does: the logo, then the menu items
+   immediately beside it on the left, and the actions pushed to the far right.
+   .nav takes the remaining width and spaces its two groups apart. */
+.nav {
+  flex: 1;
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 2rem;
+  margin-left: 2.5rem;
+}
+.nav-main { display: flex; align-items: center; gap: 1.75rem; }
+.nav-actions { display: flex; align-items: center; gap: 1.25rem; }
+
+.nav-tel {
+  white-space: nowrap;
+  font-variant-numeric: tabular-nums;
+}
 .nav a {
   color: rgba(255,255,255,0.86);
   font-size: 0.8125rem;
@@ -128,17 +143,31 @@ a:hover { color: var(--brand); }
     display: none;
     position: absolute; left: 0; right: 0; top: 100%;
     flex-direction: column; align-items: stretch; gap: 0;
+    /* Reset the desktop rule: flex:1 and the margin beside the logo would
+       inset the dropdown from the left edge. */
+    flex: none;
+    margin-left: 0;
     background: var(--brand-deep);
     border-bottom: 1px solid rgba(240,183,67,0.30);
     padding: 0.5rem 0 1rem;
     z-index: 50;
   }
   .nav.open { display: flex; }
-  .nav a {
+  .nav-main, .nav-actions {
+    flex-direction: column; align-items: stretch; gap: 0;
+  }
+  .nav-main a {
     padding: 0.85rem var(--gutter);
     border-bottom: 1px solid rgba(255,255,255,0.07);
   }
-  .nav a:hover, .nav a[aria-current="page"] { border-bottom-color: rgba(255,255,255,0.07); }
+  .nav-main a:hover,
+  .nav-main a[aria-current="page"] { border-bottom-color: rgba(255,255,255,0.07); }
+  .nav-actions {
+    padding: 1rem var(--gutter) 0;
+    gap: 0.875rem;
+  }
+  .nav-actions .nav-tel { padding: 0; border-bottom: 0; }
+  .nav-actions .btn-sm { text-align: center; padding: 0.9rem 1.25rem; }
 }
 
 /* ------------------------------------------------------------ hero */
@@ -261,6 +290,12 @@ a:hover { color: var(--brand); }
   text-decoration: none;
   border: 1px solid transparent;
   transition: background-color 0.15s, color 0.15s, border-color 0.15s;
+}
+.btn-sm {
+  padding: 0.7rem 1.25rem;
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  white-space: nowrap;
 }
 .btn-gold { background: var(--gold); color: var(--brand-deep); border-color: var(--gold); }
 .btn-gold:hover { background: var(--gold); border-color: var(--gold); color: var(--brand-deep); }

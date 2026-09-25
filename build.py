@@ -89,22 +89,34 @@ ASSET_V = _asset_version()
 # Shell
 # --------------------------------------------------------------------------
 
+# The left group, beside the logo. Contact is not here — it is the action on
+# the right, the way copper.com puts Login and its buttons there.
 NAV = [
     ('/services/', 'What We Offer'),
     ('/disclosures/', 'Disclosures'),
     ('/forms/', 'Forms'),
     ('/resources/', 'Resources'),
     ('/brokers/', 'Representatives'),
-    ('/contact/', 'Contact'),
 ]
 
 
+CURRENT = ' aria-current="page"'
+
+
 def nav_html(current):
-    out = []
+    links = []
     for href, label in NAV:
-        cur = ' aria-current="page"' if href == current else ''
-        out.append(f'<a href="{href}"{cur}>{label}</a>')
-    return '\n        '.join(out)
+        cur = CURRENT if href == current else ''
+        links.append(f'<a href="{href}"{cur}>{label}</a>')
+    joined = '\n          '.join(links)
+    contact_cur = CURRENT if current == '/contact/' else ''
+    return f"""<div class="nav-main">
+          {joined}
+        </div>
+        <div class="nav-actions">
+          <a class="nav-tel" href="tel:{PHONE_URI}">{PHONE}</a>
+          <a class="btn btn-gold btn-sm" href="/contact/"{contact_cur}>Talk to Us</a>
+        </div>"""
 
 
 FOOTER = f"""<footer class="ftr">
