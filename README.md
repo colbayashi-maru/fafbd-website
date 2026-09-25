@@ -29,6 +29,24 @@ This repository is the same site as plain HTML: eight pages, one stylesheet, one
 inline script for the mobile menu, and every filing and form served from our own
 domain.
 
+## What the firm is, as of September 2026
+
+**First Asset Financial is a limited-scope broker-dealer.** Its securities
+business is variable annuities, registered index-linked annuities (RILAs) and
+variable universal life — and nothing else. It no longer places mutual funds,
+ETFs, stocks, bonds, municipal securities, options or any other individual
+security.
+
+That restriction is recent, and it reaches much further through this site than
+a product list. `WHAT_WE_ARE` and `WHAT_WE_PLACE` at the top of `build.py` are
+the two strings that carry it; the word "full-service" appears nowhere, because
+it was true of the old business and is not true of this one.
+
+**Read [`content/COMPLIANCE.md`](content/COMPLIANCE.md), section "The scope
+change", before touching any product copy.** In particular: the Form CRS
+currently posted on this site describes the *old* business, and cannot ship as
+it stands.
+
 ## The thing the rebuild actually fixed
 
 The prototype advertised **"Managed Portfolios — professionally managed
@@ -70,7 +88,7 @@ file in this repository and should be read before any copy changes.
 | Path | Reader |
 |---|---|
 | `/` | Both — states the firm, says how it is paid, then forks |
-| `/services/` | Investors — what can be placed, and brokerage vs. advisory |
+| `/services/` | Investors — the three products, what they cost, and brokerage vs. advisory |
 | `/disclosures/` | Investors, regulators, anyone checking us out |
 | `/form-crs/` | The one document an examiner looks for first |
 | `/forms/` | Customers opening or moving an account |
@@ -91,9 +109,15 @@ python3 build.py
 > overwrites the HTML.
 
 Firm-wide facts — the phone numbers, the address, CRD and SEC numbers, the state
-count, the clearing firm — are constants at the top of `build.py` and are used by
-the header, the footer, the page bodies and the JSON-LD. Change the constant, not
-the eight places it appears.
+count, the clearing firm, and **what the firm is permitted to sell** — are
+constants at the top of `build.py` and are used by the header, the footer, the
+page bodies and the JSON-LD. Change the constant, not the eight places it
+appears.
+
+`WHAT_WE_ARE` and `WHAT_WE_PLACE` are the two that matter most. They are the
+firm's regulatory scope in prose, and they appear in the hero, the footer of
+every page, the JSON-LD and every meta description. **If the membership
+agreement changes again, change them first.**
 
 **Copy changes need a registered principal's approval before they go live**, under
 FINRA Rule 2210(b)(1)(A). Record the approval against the commit hash. A commit

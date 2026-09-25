@@ -4,7 +4,13 @@
     "Files under kind 'pdf' are served from public/assets/docs/ on our own domain.",
     "Never overwrite a PDF in place — netlify.toml caches that folder for a week.",
     "Add the replacement under a new dated filename and point 'file' at it.",
-    "Files under kind 'link' are third-party investor education, not our documents."
+    "Files under kind 'link' are third-party investor education, not our documents.",
+    "",
+    "The firm restricted its business to annuities, RILAs and variable universal",
+    "life. Documents that only described a business it no longer conducts —",
+    "mutual fund breakpoints, mutual fund investing, margin — were removed from",
+    "this roster on 2026-09-25. The PDFs are still in the repository and in git",
+    "history. See COMPLIANCE.md, 'The scope change', before putting any back."
   ],
   "firm_documents": [
     {
@@ -50,12 +56,6 @@
       "file": "FAF-Outside-Business-Activity.pdf"
     },
     {
-      "title": "Margin Disclosures",
-      "note": "The risks of borrowing against securities held in an account.",
-      "kind": "pdf",
-      "file": "FAF-Margin-Disclosures.pdf"
-    },
-    {
       "title": "Investment Objectives — Definitions",
       "note": "What each objective on the new account form means.",
       "kind": "pdf",
@@ -64,49 +64,58 @@
   ],
   "education": [
     {
+      "title": "Variable Annuities — the basics",
+      "note": "Investor.gov, from the SEC's Office of Investor Education.",
+      "kind": "link",
+      "url": "https://www.investor.gov/introduction-investing/investing-basics/glossary/variable-annuities",
+      "checked": "2026-09-25"
+    },
+    {
+      "title": "Registered Index-Linked Annuities — the basics",
+      "note": "Investor.gov on how a buffer or floor actually works, and what it costs you in upside.",
+      "kind": "link",
+      "url": "https://www.investor.gov/introduction-investing/investing-basics/glossary/registered-index-linked-annuity-rila",
+      "checked": "2026-09-25"
+    },
+    {
+      "title": "Variable Life Insurance — the basics",
+      "note": "Investor.gov. What separates a variable policy from an ordinary one.",
+      "kind": "link",
+      "url": "https://www.investor.gov/introduction-investing/investing-basics/glossary/variable-life-insurance",
+      "checked": "2026-09-25"
+    },
+    {
+      "title": "Annuities",
+      "note": "FINRA's overview of the whole family, and the questions to ask about each.",
+      "kind": "link",
+      "url": "https://www.finra.org/investors/investing/investment-products/annuities",
+      "checked": "2026-09-25"
+    },
+    {
+      "title": "Should You Exchange Your Variable Annuity?",
+      "note": "FINRA on 1035 exchanges — the transaction that draws the most scrutiny in this business, including ours.",
+      "kind": "link",
+      "url": "https://www.finra.org/investors/insights/exchange-variable-annuity",
+      "checked": "2026-09-25"
+    },
+    {
+      "title": "Indexed Annuities — the complicated risks and rewards",
+      "note": "FINRA investor alert.",
+      "kind": "link",
+      "url": "https://www.finra.org/investors/insights/complicated-risks-and-rewards-indexed-annuities",
+      "checked": "2026-09-25"
+    },
+    {
       "title": "Working With Your Financial Professional",
       "note": "Questions worth asking, and what the answers tell you.",
       "kind": "pdf",
       "file": "FAF-Working-With-Your-Financial-Professional.pdf"
     },
     {
-      "title": "Mutual Fund Investing",
-      "note": "Share classes, expenses, and how the costs compound.",
-      "kind": "pdf",
-      "file": "FAF-Mutual-Fund-Investing.pdf"
-    },
-    {
-      "title": "Mutual Fund Breakpoints",
-      "note": "Sales-charge discounts you may be entitled to, and how to claim them.",
-      "kind": "pdf",
-      "file": "FAF-Mutual-Fund-Breakpoints.pdf"
-    },
-    {
-      "title": "Mutual Funds — the basics",
-      "note": "Investor.gov, from the SEC's Office of Investor Education.",
-      "kind": "link",
-      "url": "https://www.investor.gov/introduction-investing/investing-basics/investment-products/mutual-funds-and-exchange-traded-funds-etfs/mutual-funds",
-      "checked": "2026-09-25"
-    },
-    {
       "title": "Why Broker-Dealers Ask for Personal Information",
       "note": "Investor.gov explanation of the information we are required to collect.",
       "kind": "link",
       "url": "https://www.investor.gov/introduction-investing/investing-basics/glossary/broker-dealers-why-they-ask-personal-information",
-      "checked": "2026-09-25"
-    },
-    {
-      "title": "Variable Annuities — weighing an exchange",
-      "note": "FINRA investor alert.",
-      "kind": "link",
-      "url": "https://www.finra.org/investors/insights/exchange-variable-annuity",
-      "checked": "2026-09-25"
-    },
-    {
-      "title": "Equity-Indexed Annuities: A Complex Choice",
-      "note": "FINRA investor alert.",
-      "kind": "link",
-      "url": "https://www.finra.org/investors/insights/complicated-risks-and-rewards-indexed-annuities",
       "checked": "2026-09-25"
     }
   ]

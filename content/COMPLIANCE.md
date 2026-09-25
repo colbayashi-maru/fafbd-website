@@ -1,9 +1,15 @@
 # Communications review — firstassetfinancial.com
 
-**Status: the specific problems listed below are corrected. Seven items remain
-open, and all seven sit in the firm's own filings and records rather than in
-website copy.** One of them — the address in the filed Form CRS — should be
-looked at this week.
+**Status: the specific problems listed below are corrected. Eleven items remain
+open, and all eleven sit in the firm's own filings and records rather than in
+website copy.**
+
+**Two of them are urgent.** The firm restricted its securities business in
+September 2026 to annuities, RILAs and variable universal life — see
+"The scope change" below — and as a result the Form CRS posted on this site now
+describes a business the firm does not conduct, in addition to giving an address
+that was already wrong. Both corrections belong in one amendment, and Rule
+17a-14 gives thirty days.
 
 This records a rule-by-rule review of the site's copy and the changes made as a
 result. It is not a legal opinion and it is not a substitute for review by the
@@ -44,10 +50,10 @@ projection of performance rather than conditioning it.
 | **FINRA 2210(d)(3)** | References to FINRA membership must carry the member's name and not mislead | Satisfied — the lockup and the footer both name the firm |
 | **FINRA 2210(d)(6)** | Testimonials carry disclosure obligations | **None on the site.** See "Do not add" |
 | **FINRA 2266** | SIPC information must reach customers | The footer and the band both explain what SIPC does and does not cover |
-| **Exchange Act Rule 17a-14** | Form CRS must be posted on the firm's **public website** | **Was broken. Fixed** — see item 7 |
+| **Exchange Act Rule 17a-14** | Form CRS must be posted on the firm's **public website**, and amended within 30 days of becoming materially inaccurate | The broken link is fixed (item 7). **The document itself is now wrong** — see "The scope change", open item A |
 | **Reg BI (Rule 15l-1)** | Best-interest standard for recommendations; disclosure of scope and conflicts | Drove the "How we are paid" section |
 | **Exchange Act Rule 17a-4(b)(4)** | Retain communications relating to the business | Satisfied structurally |
-| **Securities Act §5 / Rule 156** | Funds and variable annuities are sold by prospectus | Stated on every page that names one |
+| **Securities Act §5 / Rule 156** | Variable annuities, RILAs and variable life are sold by prospectus | Stated on every page that names one |
 
 ---
 
@@ -239,7 +245,164 @@ explains, in plain terms, why the old list is gone.
 
 ---
 
-## Open items — all seven are in the firm's records, not in website copy
+## The scope change — September 2026
+
+**The firm has restricted its securities business to variable annuities,
+registered index-linked annuities (RILAs) and variable universal life.** It no
+longer places mutual funds, exchange-traded funds, REITs, stocks, corporate or
+municipal bonds, U.S. government securities, brokered CDs, options, 529 plans
+or health savings plans. Annuity and VUL contracts may still be held inside an
+IRA — traditional, Roth, rollover, SEP or SIMPLE — or a 403(b).
+
+This is the largest change the site has had, and it reaches further than the
+product list. Recorded here in full because most of the consequences are not
+obvious.
+
+### Why it is a communications problem and not just an edit
+
+A retail communication that describes a business the member does not conduct is
+an untrue statement of material fact under **FINRA Rule 2210(d)(1)(B)**, whether
+or not anyone is misled by it in practice. The prior site — and the Base44
+prototype, and the live PHP site — all advertise a catalogue the firm can no
+longer sell from. Every one of those pages has to come down or be corrected
+before the restriction takes public effect.
+
+The risk runs the other way too. A visitor who arrives looking for a mutual
+fund, is not told the firm no longer places them, and ends up in an annuity
+conversation instead, is the exact fact pattern that makes a **Reg BI** problem
+out of what began as a website problem.
+
+### What changed on the site
+
+| Was | Now | Why |
+|---|---|---|
+| "A **full-service** broker-dealer / investment firm" — hero, footer, JSON-LD and every meta description | "A broker-dealer specializing in annuities and variable life insurance", and **"limited-scope broker-dealer"** where the point needs making | "Full-service" was true of the old business and is flatly untrue of this one. It appeared in eight places and appears in none |
+| Home page: four product tiles including funds, ETFs, individual securities | Three tiles — variable annuities, RILAs, VUL — under "Three products, and we know them well" | The list is the business |
+| `/services/`: a four-group catalogue of roughly thirty instruments | "A short list, on purpose", then the three contracts with their actual cost structures, then where they can be held | See below on why the costs are now on the page |
+| No statement of what the firm does **not** do | An explicit paragraph in the footer of every page, on `/services/`, and on `/brokers/` | A negative statement is the one a visitor needs and the one a firm never volunteers |
+| `/forms/`: mutual fund investment form, change-of-dealer form | Removed. A note says so and tells a legacy holder to call | A form for a product the firm cannot place is an invitation to a transaction it cannot execute |
+| `/disclosures/`: mutual fund breakpoints, mutual fund investing, margin disclosures | Removed from the roster. **PDFs remain in the repository and in git history** | See the open item below — this one is not finished |
+| `/disclosures/` education: mutual fund links | Variable annuity, RILA and variable life links from Investor.gov and FINRA, including the 1035 exchange alert | The education has to match what is being sold |
+| `/resources/`: FINRA Fund Analyzer, MSRB EMMA | Removed. FINRA on annuities, Investor.gov on RILAs and variable life added | A fund cost analyzer on the site of a firm that places no funds |
+| Disclosure band: "Mutual funds and variable annuities are sold by prospectus" | Surrender charges, rider fees, early-distribution tax consequences, and **the guarantees depending on the issuing insurer rather than on the firm or SIPC** | The material risks of the new business are not the material risks of the old one |
+| **MSRB** named as a registration on the home page and in the footer | **Removed.** See the open item below | |
+
+### Costs are now on the product page, deliberately
+
+`/services/` sets out, for each of the three contracts, what it charges: mortality
+and expense charges, rider costs, surrender periods, the cap or participation
+rate that is the price of a RILA's buffer, and the cost of insurance inside a VUL
+that rises with age and can lapse the policy.
+
+That is more candour than a product page usually carries, and it is there on
+purpose. **Rule 2210(d)(1)(A) requires a sound basis for evaluating the facts**,
+and for this family of products the fee structure *is* the material fact. A page
+that described the benefits of a variable annuity without its costs would not be
+fair and balanced, and these are the products where regulators look hardest —
+FINRA's annual oversight report has named annuity recommendations and 1035
+exchanges every year for a decade.
+
+The page also carries the six questions a customer should ask before signing,
+including what the representative is paid and whether they would be paid
+differently on something else.
+
+### The IRA point
+
+Both `/` and `/services/` state that **buying an annuity inside an IRA or 403(b)
+adds no tax benefit**, because the account is already tax-deferred, and that
+there therefore has to be some other reason — income guarantees, the death
+benefit — which the customer is entitled to hear.
+
+This is on the site because it is the single most common criticism of this
+business and because it is true. Saying it first is both better practice and
+better defence: a firm that has published the objection cannot easily be accused
+of concealing it.
+
+---
+
+## Open items from the scope change — four, and the first is serious
+
+### A. The posted Form CRS now describes a business the firm does not conduct
+
+**This is now the most serious item on this site, ahead of the address.**
+
+The Form CRS hosted at `/assets/docs/FAF-Form-CRS.pdf` lists, as retail
+brokerage services the firm offers:
+
+> Corporate equity securities (stocks) · Mutual funds · Exchange-traded funds
+> (ETFs) · Municipal securities · Checking accounts · Put and call options or
+> option writer · Corporate debt securities (Bonds) · U.S. government securities
+> · Certificates of Deposit (Brokered) · Health Savings Plans
+
+**The firm places none of those any more.** The document also describes
+commission ranges and a $35 brokered-trade minimum that belong to the old
+business.
+
+Form CRS must be amended within **30 days** of any information becoming
+materially inaccurate, and the amended version filed and posted. A relationship
+summary whose entire "What investment services and advice can you provide me?"
+section is wrong is not a technical defect — it is the specific document the SEC
+built Rule 17a-14 around, and it is linked from the footer of every page of this
+site.
+
+**Until an amended Form CRS is supplied, this site is linking a document that
+contradicts the pages linking it.** That is worse than the 404 the prototype
+had. Get the amended version, drop it into `public/assets/docs/` under a new
+dated filename, repoint `content/disclosures.json`, and rebuild.
+
+Note that the address error in open item 1 below is in the same document. Both
+corrections belong in the same amendment.
+
+### B. MSRB registration has been removed from the site — confirm it is withdrawn
+
+A firm whose securities business is annuities and variable life has no municipal
+securities business, so the MSRB registration would be withdrawn on **Form
+A-15**.
+
+The site previously named the MSRB on the home page and in the footer. It has
+been **removed**, because claiming a registration the firm may no longer hold is
+worse than omitting one it does. Confirm the withdrawal is filed. If for some
+reason the firm remains MSRB-registered and wants to say so, it goes back in
+`build.py` and the footer — but it should not, because it would then be
+advertising a capability it does not use.
+
+### C. The FINRA membership agreement
+
+A restriction of business lines runs through **FINRA Rule 1017** — either a
+continuing membership application or, at minimum, a materiality consultation —
+and produces an amended membership agreement stating what the firm is permitted
+to do.
+
+**The website must not describe a business broader than that agreement
+permits.** Read the amended agreement against `/services/` before this goes
+live. If the agreement is narrower than this page — for example if it permits
+variable contracts but not registered index-linked annuities specifically —
+the page is wrong and has to come in.
+
+Confirm too whether the restriction changes the firm's **SIPC** position or its
+net capital requirement, and whether the **clearing arrangement with Hilltop
+Securities** survives a business this narrow. The site names Hilltop on
+`/services/` and `/brokers/`; if that relationship has ended, both references
+come out.
+
+### D. Legacy mutual fund positions
+
+The mutual fund breakpoint and mutual fund investing disclosures were removed
+from `/disclosures/`, and the mutual fund forms from `/forms/`. The PDFs are
+still in the repository.
+
+**If customers still hold mutual fund positions that were bought through the
+firm**, those disclosures may still have to reach them by some route, and there
+is a servicing question the website should answer rather than dodge. `/forms/`
+now tells a legacy holder to call the home office. Confirm that is the right
+answer, and that someone at the home office knows what to say.
+
+Same question for the **margin disclosures**, which were also removed: confirm
+no margin accounts remain open.
+
+---
+
+## Open items from the original review — seven, all in the firm's records
 
 ### 1. The filed Form CRS gives the wrong address. Look at this first.
 
@@ -394,8 +557,15 @@ Two gaps the repository does not close on its own:
       drop the new PDF into `public/assets/docs/` under a **new dated filename**,
       repoint `content/disclosures.json`, and rebuild. Do not overwrite the
       existing file: `netlify.toml` caches that folder for a week.
-- [ ] **Confirm MSRB registration** — open item 3 — or remove the MSRB reference
-      and municipal securities from `/services/` and the footer.
+- [ ] **Confirm the amended Form CRS** — scope-change open item A. The posted
+      one describes a business the firm no longer conducts. **This is the one
+      that cannot ship as it stands.**
+- [ ] **Confirm the amended FINRA membership agreement** permits everything
+      `/services/` describes, RILAs included — scope-change open item C.
+- [ ] **Confirm the MSRB registration is withdrawn** — scope-change open item B.
+      The reference has already been removed from the site.
+- [ ] **Confirm what happens to legacy mutual fund and margin positions**, and
+      that the home office knows the answer — scope-change open item D.
 - [ ] **Confirm both telephone numbers ring**, and the labelling of each.
 - [ ] **Confirm Hilltop Securities is still the clearing firm.**
 - [ ] **Delete the `X-Robots-Tag = "noindex, nofollow"` block from

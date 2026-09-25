@@ -2,11 +2,13 @@
   "_comment": [
     "The account-form roster for /forms/.",
     "Every file is served from public/assets/docs/ on our own domain.",
-    "Forms go stale. When the clearing firm or FINRA revises one, add the new",
-    "file under a new dated name and repoint 'file' — do not overwrite in place,",
-    "because netlify.toml caches that folder for a week."
+    "Forms go stale. When the carrier or FINRA revises one, add the new file",
+    "under a new dated name and repoint 'file' — do not overwrite in place,",
+    "because netlify.toml caches that folder for a week.",
+    "",
+    "The mutual fund forms came off on 2026-09-25 with the scope change. The",
+    "PDFs remain in the repository. See COMPLIANCE.md, 'The scope change'."
   ],
-
   "groups": [
     {
       "title": "Opening an account",
@@ -14,34 +16,18 @@
       "forms": [
         {
           "title": "New Account Form",
-          "note": "Required for every new account, whatever you are investing in.",
+          "note": "Required for every new account, whatever you are placing.",
           "file": "FAF-New-Account-Form.pdf"
         }
       ]
     },
     {
-      "title": "Mutual funds",
-      "intro": "",
+      "title": "Annuities and variable life",
+      "intro": "A variable annuity, a registered index-linked annuity and a variable universal life policy are all long-term contracts with surrender charges and ongoing fees. Read the prospectus before you sign anything.",
       "forms": [
         {
-          "title": "Mutual Fund Investment Form",
-          "note": "Accompanies the new account form when you are investing in a fund.",
-          "file": "FAF-Mutual-Fund-Investment-Form.pdf"
-        },
-        {
-          "title": "Change of Dealer Authorization",
-          "note": "Moves an existing fund position held elsewhere to your First Asset representative.",
-          "file": "FAF-Mutual-Fund-Change-of-Dealer-Form.pdf"
-        }
-      ]
-    },
-    {
-      "title": "Variable annuities",
-      "intro": "A variable annuity is a long-term contract with surrender charges and ongoing fees. Read the prospectus before you sign anything.",
-      "forms": [
-        {
-          "title": "Variable Annuity Forms (VA-1 and VA-3)",
-          "note": "Used both for a new variable annuity purchase and for a 1035 exchange of one contract for another.",
+          "title": "Annuity Forms (VA-1 and VA-3)",
+          "note": "Used both for a new purchase and for a 1035 exchange of one contract for another.",
           "file": "FAF-Variable-Annuity-Forms.pdf"
         }
       ]

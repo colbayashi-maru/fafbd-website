@@ -5,24 +5,26 @@
     "This list is deliberately short. The page it replaced carried 78 links",
     "assembled around 2006; an audit on 2026-09-25 found roughly a third dead",
     "and a further dozen silently redirecting to a different company than the",
-    "one named in the link text — AIM to Invesco, American Funds to Capital",
-    "Group, Heritage to Eagle Asset, SunAmerica to Corebridge. A link labelled",
-    "with one firm's name that lands on another firm's sales page is a",
-    "communication with the public that the firm cannot stand behind.",
+    "one named in the link text. A link labelled with one firm's name that",
+    "lands on another firm's sales page is a communication with the public",
+    "that the firm cannot stand behind.",
     "",
-    "So the rule for this file: only regulators, government sites, and tools",
-    "the firm is prepared to be associated with. No fund-company home pages —",
-    "a representative sends the prospectus that applies. Every entry carries",
-    "the date it was last verified. Re-check them annually and update 'checked'."
+    "So the rule for this file: only regulators and government sites. No",
+    "carrier or fund-company pages — a representative sends the prospectus,",
+    "which is the document that governs. Every entry carries the date it was",
+    "last verified. Re-check them annually and update 'checked'.",
+    "",
+    "Revised 2026-09-25 for the scope change: the fund cost analyzer and the",
+    "municipal securities tool came off, because the firm no longer places",
+    "either. See COMPLIANCE.md, 'The scope change'."
   ],
-
   "groups": [
     {
       "title": "Check us, and anyone else",
       "links": [
         {
           "label": "FINRA BrokerCheck",
-          "note": "Our registration, our representatives, and our disciplinary history.",
+          "note": "Our registration, the scope of our business, our representatives, and our disciplinary history.",
           "url": "https://brokercheck.finra.org/firm/summary/139107",
           "checked": "2026-09-25"
         },
@@ -41,23 +43,29 @@
       ]
     },
     {
-      "title": "Understanding what you hold",
+      "title": "Understanding what you are being offered",
       "links": [
         {
-          "label": "FINRA Fund Analyzer",
-          "note": "Compares the real cost of funds and ETFs over the time you expect to hold them.",
-          "url": "https://tools.finra.org/fund_analyzer/",
+          "label": "FINRA on annuities",
+          "note": "The whole family — variable, fixed and indexed — and the questions to ask about each.",
+          "url": "https://www.finra.org/investors/investing/investment-products/annuities",
           "checked": "2026-09-25"
         },
         {
-          "label": "MSRB EMMA",
-          "note": "Official disclosures and trade prices for municipal securities.",
-          "url": "https://emma.msrb.org/",
+          "label": "Registered index-linked annuities",
+          "note": "Investor.gov on how a buffer or floor works, and what it costs you in upside.",
+          "url": "https://www.investor.gov/introduction-investing/investing-basics/glossary/registered-index-linked-annuity-rila",
+          "checked": "2026-09-25"
+        },
+        {
+          "label": "Variable life insurance",
+          "note": "Investor.gov. What separates a variable policy from an ordinary one.",
+          "url": "https://www.investor.gov/introduction-investing/investing-basics/glossary/variable-life-insurance",
           "checked": "2026-09-25"
         },
         {
           "label": "SIPC — what is protected",
-          "note": "What SIPC covers if a brokerage fails, and what it does not.",
+          "note": "What SIPC covers if a brokerage fails, and what it does not. Note that an annuity's guarantees depend on the insurance company, not on SIPC.",
           "url": "https://www.sipc.org/for-investors/what-sipc-protects",
           "checked": "2026-09-25"
         }
@@ -70,12 +78,6 @@
           "label": "Compound interest calculator",
           "note": "Investor.gov. Shows what costs and time do to a balance.",
           "url": "https://www.investor.gov/financial-tools-calculators/calculators/compound-interest-calculator",
-          "checked": "2026-09-25"
-        },
-        {
-          "label": "Savings bond calculator",
-          "note": "TreasuryDirect. Values paper series EE, E, I and savings notes.",
-          "url": "https://www.treasurydirect.gov/savings-bonds/savings-bond-calculator/",
           "checked": "2026-09-25"
         }
       ]

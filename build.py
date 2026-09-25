@@ -58,6 +58,18 @@ STATE_COUNT = '23'
 CLEARING_FIRM = 'Hilltop Securities Inc.'
 PRESIDENT = 'Bob Hamman'
 
+# The firm restricted its securities business in 2026 to annuities, registered
+# index-linked annuities and variable universal life. It no longer places
+# mutual funds, ETFs or individual securities of any kind.
+#
+# "Full-service" was true of the old business and is not true of this one, so
+# it appears nowhere. These two strings are what replaced it, and they are used
+# in the footer, the hero, the JSON-LD and every meta description — change them
+# here, not in the eight places they appear. See content/COMPLIANCE.md.
+WHAT_WE_ARE = 'a broker-dealer specializing in annuities and variable life insurance'
+WHAT_WE_PLACE = ('variable annuities, registered index-linked annuities and '
+                 'variable universal life')
+
 FORM_CRS_PDF = '/assets/docs/FAF-Form-CRS.pdf'
 
 
@@ -102,8 +114,8 @@ FOOTER = f"""<footer class="ftr">
         <div class="ftr-logo">
           <img src="/assets/faf-lockup-reversed.svg" alt="{SHORT}" width="208" height="39">
         </div>
-        <p>A full-service broker-dealer in {CITY}, {STATE}, working through
-           independent representatives.</p>
+        <p>A broker-dealer in {CITY}, {STATE} placing annuities and variable
+           life insurance through independent representatives.</p>
       </div>
       <div>
         <h2>Navigate</h2>
@@ -132,7 +144,6 @@ FOOTER = f"""<footer class="ftr">
           <li><a href="{FORM_CRS_PDF}">Form CRS</a></li>
           <li><a href="https://www.finra.org/" rel="noopener">FINRA</a></li>
           <li><a href="https://www.sipc.org/" rel="noopener">SIPC</a></li>
-          <li><a href="https://www.msrb.org/" rel="noopener">MSRB</a></li>
         </ul>
       </div>
     </div>
@@ -156,6 +167,12 @@ FOOTER = f"""<footer class="ftr">
          obligations. Our
          <a href="{FORM_CRS_PDF}">Form CRS</a> describes both, along with the
          conflicts of interest that apply to us.</p>
+      <p><strong>{SHORT} is a limited-scope broker-dealer.</strong> Our
+         securities business is {WHAT_WE_PLACE}. We do not offer mutual funds,
+         exchange-traded funds, stocks, bonds, municipal securities, options or
+         any other individual security. The scope of our registration is on the
+         public record at
+         <a href="{BROKERCHECK}" rel="noopener">FINRA BrokerCheck</a>.</p>
       <p>This site is published for residents of the United States. {SHORT} and
          its representatives may transact business only in states in which they
          are registered or exempt from registration.</p>
@@ -180,6 +197,8 @@ ORG_JSONLD = json.dumps({
     "@context": "https://schema.org",
     "@type": "FinancialService",
     "name": FIRM,
+    "description": (f"{FIRM} is {WHAT_WE_ARE} in {CITY}, {STATE}. Our securities "
+                    f"business is {WHAT_WE_PLACE}."),
     "alternateName": SHORT,
     "url": SITE + "/",
     "logo": SITE + "/assets/faf-lockup-reversed.svg",
@@ -290,9 +309,14 @@ def disclosure_band(extra=''):
        <a href="{FORM_CRS_PDF}">Form CRS</a> sets out our services, our costs,
        our conflicts and our disciplinary history, and we encourage you to read
        it before you open an account.</p>
-    <p>{SHORT} does not provide tax or legal advice. Mutual funds and variable
-       annuities are sold by prospectus; read it, including the charges and
-       expenses, before investing.{(' ' + extra) if extra else ''}</p>
+    <p><strong>Annuities and variable life policies are long-term contracts.</strong>
+       They carry surrender charges for early withdrawal, ongoing contract and
+       rider fees, and tax consequences on early distribution — and the
+       guarantees in them depend on the claims-paying ability of the issuing
+       insurance company, not on {SHORT} and not on SIPC. All are sold by
+       prospectus; read it, including the charges and expenses, before you
+       invest. {SHORT} does not provide tax or legal
+       advice.{(' ' + extra) if extra else ''}</p>
   </div>
 </section>"""
 
@@ -364,8 +388,8 @@ def page_home():
   <div class="wrap">
     <p class="eyebrow">Member FINRA &middot; Member SIPC &middot; Since 2005</p>
     <h1>Your partner in financial independence.</h1>
-    <p class="lede">{FIRM} is a full-service investment firm in {CITY}, {STATE},
-       working through independent representatives in {STATE_COUNT} states.</p>
+    <p class="lede">{FIRM} is {WHAT_WE_ARE}, in {CITY}, {STATE}, working through
+       independent representatives in {STATE_COUNT} states.</p>
     <div class="btns">
       <a class="btn btn-gold" href="/services/">Explore our services</a>
       <a class="btn btn-ghost" href="/contact/">Contact a representative</a>
@@ -376,34 +400,39 @@ def page_home():
 <section class="sec">
   <div class="wrap">
     <p class="eyebrow eyebrow-light">What we offer</p>
-    <h2>A full range of investment products</h2>
-    <p>Your representative will help you work out which of these fits what you
-       are trying to do. What any individual representative can place depends on
-       the securities licenses they hold.</p>
-    <div class="tiles">
+    <h2>Three products, and we know them well</h2>
+    <p>We are a limited-scope broker-dealer. That is a deliberate choice: a
+       short list is a list your representative can actually know. What any
+       individual representative can place depends on the securities and
+       insurance licenses they hold.</p>
+    <div class="tiles tiles-3">
       <div class="tile">
-        <h3>Funds and ETFs</h3>
-        <p>Mutual funds, exchange-traded funds and real estate investment
-           trusts, across every major asset class. All sold by prospectus.</p>
+        <h3>Variable annuities</h3>
+        <p>A long-term contract whose value moves with the subaccounts you
+           choose. Income options and optional riders, each at a cost. Sold by
+           prospectus.</p>
       </div>
       <div class="tile">
-        <h3>Retirement and education</h3>
-        <p>Traditional, Roth, Educational and self-directed IRAs, rollovers and
-           conversions, SEP and SIMPLE plans, 401(k), 403(b) and 529 plans.</p>
+        <h3>Registered index-linked annuities</h3>
+        <p>Crediting linked to an index, with a stated buffer or floor against
+           loss — and a cap or participation rate that limits the gain in
+           exchange. A security. Sold by prospectus.</p>
       </div>
       <div class="tile">
-        <h3>Individual securities</h3>
-        <p>Stocks, corporate and municipal bonds, U.S. government securities,
-           brokered certificates of deposit, and options.</p>
-      </div>
-      <div class="tile">
-        <h3>Annuities and insurance</h3>
-        <p>Fixed, variable and equity-indexed annuities, and variable universal
-           life. Long-term contracts — read the prospectus first.</p>
+        <h3>Variable universal life</h3>
+        <p>Permanent life insurance whose cash value is invested in
+           subaccounts. A death benefit and an investment account in one
+           contract, with the costs of both. Sold by prospectus.</p>
       </div>
     </div>
+    <p class="note">These can be held inside an IRA — traditional, Roth,
+       rollover, SEP or SIMPLE — or a 403(b), where the tax treatment comes
+       from the account rather than from the contract. <strong>Buying an
+       annuity inside an IRA does not add a tax benefit</strong>, because the
+       account is already tax-deferred; ask your representative why a
+       particular contract belongs there.</p>
     <div class="btns" style="margin-top:2.5rem">
-      <a class="btn btn-outline" href="/services/">See the full catalog</a>
+      <a class="btn btn-outline" href="/services/">What each one costs you</a>
     </div>
   </div>
 </section>
@@ -421,9 +450,11 @@ def page_home():
          to manage it. Clearing, custody and execution run through
          {CLEARING_FIRM}, so the infrastructure behind your account is not the
          size of the firm in front of it.</p>
-      <p>Regardless of the financial goals you are working toward, our
-         registered representatives have the licensing and the products to help
-         you pursue them.</p>
+      <p>In 2026 we narrowed what the firm does to annuities and variable life
+         insurance, and gave up the rest of the securities business. A smaller
+         firm doing fewer things is easier to supervise and easier to be a
+         customer of. If you are looking for mutual funds, ETFs or individual
+         securities, we are not the right firm and we will tell you so.</p>
     </div>
     <div>
       <div class="orgs">
@@ -436,11 +467,6 @@ def page_home():
           <span class="org-mark">SIPC</span>
           <span class="org-name">Securities Investor Protection Corporation</span>
           <span class="org-role">Member</span>
-        </div>
-        <div class="org">
-          <span class="org-mark">MSRB</span>
-          <span class="org-name">Municipal Securities Rulemaking Board</span>
-          <span class="org-role">Registered</span>
         </div>
       </div>
       <dl class="deflist deflist-tight">
@@ -508,82 +534,116 @@ def page_home():
 </section>
 """
     return shell(
-        f'{SHORT} — a full-service broker-dealer in {CITY}, {STATE}',
-        f'{FIRM} is a full-service broker-dealer in {CITY}, {STATE}, registered '
-        f'with the SEC and a member of FINRA and SIPC, working through '
-        f'independent representatives in {STATE_COUNT} states.',
+        f'{SHORT} — annuities and variable life insurance, {CITY}, {STATE}',
+        f'{FIRM} is {WHAT_WE_ARE} in {CITY}, {STATE}, registered with the SEC '
+        f'and a member of FINRA and SIPC. Our securities business is '
+        f'{WHAT_WE_PLACE}.',
         body, '/', '')
 
 
 def page_services():
     body = phead(
         'What we offer',
-        'The products our representatives can place, what each one is, and what '
-        'it costs you to hold it. Which of these any individual representative '
-        'can offer depends on the securities licenses they hold.',
+        'Three products. What each one is, what it costs you to hold, and what '
+        'has to be true for it to be the right thing to own.',
         'What we offer') + f"""
 
 <section class="sec">
+  <div class="wrap narrow prose">
+    <h2>A short list, on purpose</h2>
+    <p>{SHORT} is a <strong>limited-scope broker-dealer</strong>. Our securities
+       business is {WHAT_WE_PLACE} — and nothing else.</p>
+    <p><strong>We do not offer mutual funds, exchange-traded funds, stocks,
+       bonds, municipal securities, options, certificates of deposit or any
+       other individual security.</strong> We placed most of those once and we
+       no longer do. If that is what you are looking for, we are not the right
+       firm, and the sooner we both know it the better.</p>
+    <p>What is left is a family of contracts that are genuinely complicated —
+       long-dated, layered with optional riders, and expensive to leave early.
+       They suit some people well and other people not at all. A firm that
+       places three products has no excuse for not knowing them thoroughly, and
+       that is the trade we have made.</p>
+  </div>
+</section>
+
+<section class="sec sec-warm">
   <div class="wrap">
-    <h2>The catalog</h2>
-    <p>Availability varies by representative. A Series 6 license covers a
-       narrower set than a Series 7; ask yours what they are licensed to place
-       before you plan around anything on this list.</p>
+    <h2>The three</h2>
+    <p>All three are securities, all three are sold by prospectus, and in all
+       three the contract guarantees depend on the insurance company that issues
+       them.</p>
 
     <div class="catalog">
       <div class="catgroup">
-        <h3>Funds and pooled investments</h3>
+        <h3>Variable annuities</h3>
         <ul>
-          <li>Mutual funds <span>Sold by prospectus</span></li>
-          <li>Exchange-traded funds (ETFs) <span>Sold by prospectus</span></li>
-          <li>Real estate investment trusts (REITs) <span>Sold by prospectus</span></li>
+          <li>Value moves with the subaccounts you choose <span>You bear the investment risk</span></li>
+          <li>Income and death-benefit riders <span>Each at an annual cost</span></li>
+          <li>Surrender charges for early withdrawal <span>Often 5&ndash;7 years</span></li>
+          <li>Mortality, expense and administrative charges <span>Annual, on top of subaccount fees</span></li>
         </ul>
       </div>
 
       <div class="catgroup">
-        <h3>Individual securities</h3>
+        <h3>Registered index-linked annuities (RILAs)</h3>
         <ul>
-          <li>Corporate equity securities (stocks)</li>
-          <li>Corporate debt securities (bonds)</li>
-          <li>Municipal securities</li>
-          <li>U.S. government securities</li>
-          <li>Brokered certificates of deposit</li>
-          <li>Put and call options</li>
+          <li>Crediting linked to an index <span>You do not own the index</span></li>
+          <li>A buffer or floor against loss <span>Partial protection, not full</span></li>
+          <li>A cap or participation rate <span>The price of that protection</span></li>
+          <li>Surrender charges, and a term you are expected to hold through</li>
         </ul>
       </div>
 
       <div class="catgroup">
-        <h3>Retirement and education accounts</h3>
+        <h3>Variable universal life (VUL)</h3>
         <ul>
-          <li>Traditional, Roth and Educational IRAs</li>
-          <li>Rollovers, transfers and Roth conversions</li>
-          <li>Self-directed IRAs</li>
+          <li>Permanent life insurance with an investment account inside</li>
+          <li>Cash value invested in subaccounts <span>You bear the investment risk</span></li>
+          <li>Cost of insurance, which rises with age <span>Deducted from cash value</span></li>
+          <li>A policy can lapse if the cash value runs out <span>Premiums may need to increase</span></li>
+        </ul>
+      </div>
+
+      <div class="catgroup">
+        <h3>Where they can be held</h3>
+        <ul>
+          <li>A taxable account</li>
+          <li>Traditional, Roth and rollover IRAs</li>
           <li>SEP and SIMPLE IRAs</li>
-          <li>401(k), pension and profit-sharing plans</li>
           <li>403(b) plans <span>Schools, hospitals</span></li>
-          <li>Non-qualified deferred compensation plans</li>
-          <li>529 college savings plans</li>
-          <li>Health savings plans</li>
-        </ul>
-      </div>
-
-      <div class="catgroup">
-        <h3>Annuities and insurance products</h3>
-        <ul>
-          <li>Fixed annuities</li>
-          <li>Variable annuities <span>Sold by prospectus</span></li>
-          <li>Equity-indexed annuities</li>
-          <li>Variable universal life <span>Sold by prospectus</span></li>
         </ul>
       </div>
     </div>
 
-    <p class="note">Annuities are long-term contracts. They carry surrender
-       charges, ongoing contract and rider fees, and tax consequences on early
-       withdrawal, and the guarantees in them depend on the claims-paying
-       ability of the issuing insurance company — not on {SHORT} and not on
-       SIPC. Before you exchange one annuity for another, read
-       <a href="/disclosures/#education">FINRA's guidance on 1035 exchanges</a>.</p>
+    <p class="note"><strong>Buying an annuity inside an IRA or a 403(b) does not
+       add a tax benefit.</strong> Those accounts are already tax-deferred, so
+       the contract's own deferral is worth nothing there. That does not make it
+       the wrong choice — the income guarantees or the death benefit may be the
+       reason — but it does mean there has to be a reason, and you are entitled
+       to hear it. Ask.</p>
+  </div>
+</section>
+
+<section class="sec">
+  <div class="wrap narrow prose">
+    <h2>Before you sign one</h2>
+    <p>These are the questions that matter most in this particular corner of the
+       business. They are not rhetorical; put them to your representative and
+       write the answers down.</p>
+    <ul class="linklist">
+      <li>What am I paying, in total, every year — contract charges, rider charges and subaccount fees together?</li>
+      <li>What does it cost me to get out, and for how many years?</li>
+      <li>What exactly does the guarantee guarantee, and who is standing behind it?</li>
+      <li>If this is going in an IRA or a 403(b), what am I getting that the account does not already give me?</li>
+      <li>If this replaces a contract I already hold, what do I lose by leaving the old one?</li>
+      <li>What are you paid on this, and would you be paid differently on something else?</li>
+    </ul>
+    <p class="note">The last two matter more than they look. A 1035 exchange —
+       swapping one contract for another — restarts surrender charges and is the
+       transaction FINRA scrutinizes most closely in this business, ours
+       included. Read
+       <a href="/disclosures/#education">FINRA's guidance on exchanges</a> before
+       you agree to one.</p>
   </div>
 </section>
 
@@ -610,7 +670,7 @@ def page_services():
            representatives through an advisory firm. That relationship is
            typically paid by an ongoing fee and may include monitoring. If a
            representative offers you both, ask which one you are being offered
-           and why.</p>
+           and why. An adviser can place things we cannot.</p>
       </div>
     </div>
     <p class="note">A representative who can offer you either has a conflict of
@@ -620,17 +680,16 @@ def page_services():
   </div>
 </section>
 
-{closer('Ready to open an account?',
+{closer('Ready to talk it through?',
         'The account forms are here, and a representative will tell you which of '
-        'them apply to what you want to do.',
+        'them apply. Nothing gets signed on a first call.',
         '<a class="btn btn-gold" href="/forms/">Account forms</a>'
         '<a class="btn btn-ghost" href="/contact/">Contact us</a>')}
 """
     return shell(
         'What we offer',
-        f'The products {SHORT} representatives can place — funds, individual '
-        f'securities, retirement and education accounts, and annuities — and '
-        f'what each one costs to hold.',
+        f'{SHORT} places {WHAT_WE_PLACE} — what each one is, what it costs to '
+        f'hold, and the questions to ask before you sign.',
         body, '/services/', '/services/')
 
 
@@ -669,9 +728,10 @@ def page_disclosures():
 <section class="sec sec-warm">
   <div class="wrap">
     <h2 id="education">Reading on what you may be sold</h2>
-    <p>Two of these are ours. The rest are published by FINRA and by the SEC's
+    <p>One of these is ours. The rest are published by FINRA and by the SEC's
        investor education office, and we link them because they are blunter
-       about product costs than a firm's own literature usually is.</p>
+       about what these contracts cost than a firm's own literature usually
+       is — including ours.</p>
     <ul class="docs">
 {doc_list(data['education'])}
     </ul>
@@ -775,22 +835,19 @@ def page_forms():
         'Account forms',
         'The forms most often needed, hosted here so the link keeps working. '
         'Your representative will tell you which ones apply — do not guess.',
-        'Investor forms') + f"""
-
-<section class="sec">
-{groups[0]}
-</section>
+        'Investor forms') + '\n\n' + '\n\n'.join(
+        f'<section class="sec{" sec-warm" if i % 2 else ""}">\n{g}\n</section>'
+        for i, g in enumerate(groups)) + f"""
 
 <section class="sec sec-warm">
-{groups[1]}
-</section>
-
-<section class="sec">
-{groups[2]}
   <div class="wrap">
     <p class="note">These are the forms we are asked for most. If you need one
        that is not here, call <a href="tel:{PHONE_URI}">{PHONE}</a> and we will
        send it. The forms are PDFs; some are fillable and all can be printed.</p>
+    <p class="note"><strong>The mutual fund forms are gone.</strong> {SHORT} no
+       longer places mutual funds. If you hold a fund position that was bought
+       through us, call the home office and we will tell you where it sits now
+       and who services it.</p>
   </div>
 </section>
 
@@ -802,9 +859,10 @@ def page_forms():
     <p>The account form asks about your income, your net worth, your experience
        and what you are trying to achieve. That is not idle curiosity: federal
        law and FINRA rules require us to have a reasonable basis for any
-       recommendation we make, and we cannot have one without knowing those
-       things. A Customer Identification Program notice, required under the USA
-       PATRIOT Act, explains the identity checks separately.</p>
+       recommendation we make, and with contracts this long-dated and this hard
+       to reverse, we cannot have one without knowing those things. A Customer
+       Identification Program notice, required under the USA PATRIOT Act,
+       explains the identity checks separately.</p>
     <div class="btns" style="margin-top:2rem">
       <a class="btn btn-gold" href="/disclosures/#firm">Read the CIP notice</a>
       <a class="btn btn-ghost" href="/contact/">Ask us</a>
@@ -814,8 +872,7 @@ def page_forms():
 """
     return shell(
         'Account forms',
-        f'New account, mutual fund and variable annuity forms for {FIRM}, '
-        f'hosted on our own domain.',
+        f'New account and annuity forms for {FIRM}, hosted on our own domain.',
         body, '/forms/', '/forms/')
 
 
@@ -893,6 +950,12 @@ def page_brokers():
        their own practices, and the home office exists to support that rather
        than to manage it. Clearing, custody and execution run through
        {CLEARING_FIRM}</p>
+    <p><strong>Read this part before anything else.</strong> We are a
+       limited-scope broker-dealer. Our securities business is
+       {WHAT_WE_PLACE} — we do not place mutual funds, ETFs or individual
+       securities of any kind. If your book depends on those, this is not a
+       firm you can move it to, and we would rather you knew that on the first
+       call than the fourth.</p>
 
     <div class="cards">
       <div class="card">
@@ -929,7 +992,7 @@ def page_brokers():
     <p>We would rather talk than publish numbers that turn out not to apply to
        your book. A first call goes through four things:</p>
     <dl class="deflist">
-      <div><dt>Your book</dt><dd>What you hold, what you place, and which of it transfers cleanly</dd></div>
+      <div><dt>Your book</dt><dd>What you hold, what you place, and how much of it fits inside our scope</dd></div>
       <div><dt>Licensing</dt><dd>Which registrations you hold, which states you need, and what has to be filed</dd></div>
       <div><dt>Compliance</dt><dd>Supervision, outside business activities, and what our written procedures will ask of you</dd></div>
       <div><dt>Economics</dt><dd>Payout, the costs that come out of it, and what the transition period looks like</dd></div>
@@ -948,9 +1011,9 @@ def page_brokers():
 """
     return shell(
         'For registered representatives',
-        f'{FIRM} is an independent broker-dealer in {CITY}, {STATE}, clearing '
-        f'through {CLEARING_FIRM}, for representatives who want to run their own '
-        f'practice.',
+        f'{FIRM} is an independent, limited-scope broker-dealer in {CITY}, '
+        f'{STATE} placing {WHAT_WE_PLACE}, for representatives who want to run '
+        f'their own practice.',
         body, '/brokers/', '/brokers/')
 
 
