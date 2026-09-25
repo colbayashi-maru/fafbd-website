@@ -66,6 +66,11 @@
   [headers.values]
     Cache-Control = "public, max-age=604800"
 
+[[headers]]
+  for = "/assets/photos/*"
+  [headers.values]
+    Cache-Control = "public, max-age=2592000"
+
 # One week, not a year. A filing that is replaced must reach readers quickly —
 # which is also why a replacement gets a NEW filename rather than overwriting
 # an existing one. An overwritten document would sit stale in caches while the

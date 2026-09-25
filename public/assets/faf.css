@@ -127,19 +127,60 @@ a:hover { color: var(--brand); }
 .hero {
   background: var(--brand);
   color: var(--white);
-  padding: 5.5rem 0 5rem;
+  padding: 7rem 0 6.5rem;
   position: relative;
   overflow: hidden;
 }
+
+/* The photograph, when there is one.
+   build.py emits .hero-photo ONLY if the file exists, so a missing image is
+   never a broken image — the plain brand ground shows through and the hero
+   still reads. Two background layers: a plain url() every browser
+   understands, then an image-set() override that modern browsers use to take
+   the WebP instead, at roughly half the bytes. */
+.hero-photo::before {
+  content: "";
+  position: absolute; inset: 0;
+  background-image: var(--hero-jpg);
+  background-image: image-set(var(--hero-webp) type("image/webp"),
+                              var(--hero-jpg) type("image/jpeg"));
+  background-size: cover;
+  background-position: 68% 58%;
+  z-index: 0;
+}
+
+/* The scrim. Near-opaque over the left, where the headline sits, thinning
+   across to let the right of the frame through. Any new rule that keys on a
+   dark ground and sets text colour has to name .hero and .phead too — they
+   draw their own ground rather than carrying .sec-brand. */
 .hero::after {
   content: "";
   position: absolute; inset: 0;
+  background:
+    linear-gradient(100deg,
+      var(--brand) 0%,
+      rgba(43, 52, 57, 0.97) 34%,
+      rgba(43, 52, 57, 0.86) 56%,
+      rgba(43, 52, 57, 0.62) 100%),
+    linear-gradient(to top, rgba(30, 37, 41, 0.75) 0%, rgba(30, 37, 41, 0) 45%);
+  z-index: 0;
+}
+.hero:not(.hero-photo)::after {
   background: linear-gradient(105deg, var(--brand) 0%, var(--brand) 52%, var(--brand-soft) 100%);
   opacity: 0.85;
-  z-index: 0;
 }
 .hero > * { position: relative; z-index: 1; }
 .hero .wrap { max-width: var(--wide); }
+
+/* Below 720px the headline occupies the whole frame, so the photograph is
+   only something to read text through. Drop it — phones never download it. */
+@media (max-width: 45rem) {
+  .hero-photo::before { display: none; }
+  .hero::after {
+    background: linear-gradient(105deg, var(--brand) 0%, var(--brand) 52%, var(--brand-soft) 100%);
+    opacity: 0.9;
+  }
+}
 
 .eyebrow {
   font-size: 0.75rem; font-weight: 600;
@@ -147,6 +188,8 @@ a:hover { color: var(--brand); }
   color: var(--gold);
   margin: 0 0 1.25rem;
 }
+.eyebrow-light { color: var(--gold-deep); }
+
 .hero h1 {
   font-family: var(--display);
   font-weight: 500;
@@ -248,6 +291,7 @@ h3 {
   gap: 1.5rem;
   margin-top: 2.5rem;
 }
+.cards-3 { grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr)); }
 .card {
   background: var(--white);
   border: 1px solid var(--rule);
@@ -265,16 +309,64 @@ h3 {
 .sec-brand .card { background: rgba(255,255,255,0.05); border-color: rgba(255,255,255,0.16); }
 .sec-brand .card .num { color: var(--gold); }
 
-/* two front doors */
-.doors { display: grid; grid-template-columns: repeat(auto-fit, minmax(19rem, 1fr)); gap: 1.5rem; margin-top: 2.5rem; }
-.door {
+/* product tiles — the "what we offer" grid */
+.tiles {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+  gap: 1.5rem;
+  margin-top: 2.5rem;
+}
+.tile {
   background: var(--white);
   border: 1px solid var(--rule);
   border-top: 3px solid var(--gold);
-  padding: 2rem;
-  display: flex; flex-direction: column;
+  padding: 1.875rem 1.75rem;
 }
-.door p { flex: 1; color: var(--ink-soft); margin-bottom: 1.75rem; }
+.tile h3 { margin-bottom: 0.75rem; }
+.tile p { margin: 0; color: var(--ink-soft); font-size: 0.9875rem; }
+
+/* a section that runs prose beside a panel */
+.split {
+  display: grid;
+  grid-template-columns: 1.15fr 1fr;
+  gap: 4rem;
+  align-items: start;
+}
+.split > div > p { max-width: 38rem; }
+@media (max-width: 58rem) {
+  .split { grid-template-columns: 1fr; gap: 2.5rem; }
+}
+
+/* the regulators, named */
+.orgs { display: grid; gap: 0; border-top: 1px solid var(--rule); }
+.org {
+  display: grid;
+  grid-template-columns: 5.5rem 1fr auto;
+  gap: 1rem;
+  align-items: baseline;
+  padding: 1.125rem 0;
+  border-bottom: 1px solid var(--rule);
+}
+.org-mark {
+  font-family: var(--display);
+  font-size: 1.125rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: var(--brand);
+}
+.org-name { font-size: 0.875rem; color: var(--ink-soft); line-height: 1.4; }
+.org-role {
+  font-size: 0.6875rem; letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--gold-deep); white-space: nowrap;
+}
+@media (max-width: 30rem) {
+  .org { grid-template-columns: 1fr auto; }
+  .org-name { grid-column: 1 / -1; }
+}
+
+/* a quiet closing line, for the audience this page is not written for */
+.aside { font-size: 0.9375rem; color: var(--ink-faint); margin: 0; max-width: none; }
+.aside a { font-weight: 500; }
 
 /* ---------------------------------------------------------- tables */
 
@@ -286,6 +378,8 @@ h3 {
   padding: 1.125rem 0;
   border-top: 1px solid var(--rule);
 }
+.deflist-tight { margin-top: 1.5rem; }
+.deflist-tight div { padding: 0.75rem 0; grid-template-columns: 8rem 1fr; }
 .deflist dt { font-weight: 600; font-size: 0.9375rem; color: var(--brand); }
 .deflist dd { margin: 0; color: var(--ink-soft); font-size: 0.9875rem; }
 @media (max-width: 40rem) {

@@ -55,6 +55,7 @@ file in this repository and should be read before any copy changes.
 | `public/` | **The deployable site.** Point the host's publish directory here. |
 | `public/assets/` | Stylesheet, logos, icons, social card. |
 | `public/assets/docs/` | The filings and account forms, self-hosted. |
+| `public/assets/photos/` | The hero photograph, as JPEG and WebP. |
 | `build.py` | Generates every page. |
 | `brand/` | The supplied logo files. **Never edited.** |
 | `tools/make-assets.py` | Derives every logo and icon in `public/assets/` from `brand/`. |
@@ -211,23 +212,56 @@ To regenerate the rasters after a brand revision, replace the file in `brand/`,
 re-run the script, then render `favicon.svg` at 512px and downsample — the
 commands are the same headless-Chrome pattern as the social image above.
 
-### No photography, by decision
+### The hero photograph
 
-The prototype used two AI-generated images: a glass-skyscraper skyline behind the
-hero and a fountain pen on textured paper. Neither was kept.
+`public/assets/photos/home-hero.jpg` sits behind the home page hero, as a CSS
+background under a scrim — not an `<img>`. Two consequences worth knowing:
 
-The skyline is the stock idea of a financial firm and it is the wrong idea for
-this one — a 20-person broker-dealer on Iron Avenue in Salina, Kansas is not a
-firm with a tower, and the picture quietly told a reader otherwise. Generated
-imagery also has no licence trail, which matters more than usual for a file that
-would be sitting on a regulated firm's website.
+1. **A missing file is not a broken image.** `build.py` emits the `hero-photo`
+   class and its custom properties only when the file exists, and the
+   stylesheet draws the brand ground underneath either way. Delete the photo
+   and the hero still reads, on plain slate.
+2. **The left ~55% of the frame is under a near-opaque scrim**, because the
+   headline sits there. Any replacement wants its subject **right of centre**.
+   The CSS anchors at `68% 58%`.
 
-So the design carries its weight with type, rule and colour instead, and the
-pages are faster for it. **If real photography is ever commissioned**, the
-obvious slot is behind `.hero` on the home page, as a CSS background under a
-slate scrim — the pattern the Your IA site uses, which is worth copying because a
-missing file degrades to the plain slate ground rather than to a broken image.
-What to shoot: the actual office, the actual people, in Salina.
+`build.py` emits both a plain `url()` every browser understands and an
+`image-set()` override that modern browsers use to take the WebP instead, at
+roughly half the bytes. **Below 720px the image is dropped entirely** — the
+headline fills the frame at that width, so phones never download it.
+
+To swap one in:
+
+```bash
+python3 - <<'EOF'
+from PIL import Image
+i = Image.open('/path/to/new.jpg').convert('RGB')
+i.save('public/assets/photos/home-hero.jpg', 'JPEG', quality=80, optimize=True, progressive=True)
+i.save('public/assets/photos/home-hero.webp', 'WEBP', quality=74, method=6)
+EOF
+python3 build.py
+```
+
+**About the image that is there now.** It is the one the Base44 prototype used:
+an AI-generated blue-hour glass tower beside a neoclassical building, mirrored
+so the lit colonnade falls right of the scrim, cropped 16:9 out of the 1024px
+square original and stripped of metadata. Two things to know about it, recorded
+because they are easy to forget:
+
+- **It has no licence trail.** It was generated, not shot or licensed, so there
+  is no invoice and no rights holder to point at. That is usually fine and
+  occasionally is not.
+- **It is not this firm.** A glass tower is the stock idea of a financial firm;
+  First Asset Financial is twenty-odd people on Iron Avenue in Salina, Kansas.
+
+Neither is a reason it cannot ship, and it is the client's call. But if real
+photography is ever commissioned, the slot is already built and the swap is the
+four lines above. What to shoot: the actual office, the actual people, in
+Salina.
+
+The prototype's second generated image — a fountain pen on textured paper — is
+not used. Stock-photo shorthand for signing something, in a design that does
+not need it.
 
 ## Known gaps
 

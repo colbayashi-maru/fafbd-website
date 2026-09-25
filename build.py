@@ -317,6 +317,24 @@ def phead(h1, lede, eyebrow=''):
 </section>"""
 
 
+def photo(name):
+    """
+    The class and custom properties for a section that sits over a photograph,
+    or empty strings if the file is not there.
+
+    Emitting nothing when the file is absent is the point: the stylesheet draws
+    the brand ground underneath either way, so a missing photograph degrades to
+    a plain coloured band rather than to a broken image. Drop a correctly named
+    pair into public/assets/photos/ and it appears on the next build.
+    """
+    base = os.path.join(ROOT, 'assets', 'photos', name)
+    if not os.path.exists(base + '.jpg'):
+        return '', ''
+    style = (f"--hero-jpg:url('/assets/photos/{name}.jpg');"
+             f"--hero-webp:url('/assets/photos/{name}.webp')")
+    return ' hero-photo', f' style="{style}"'
+
+
 def write(relpath, text):
     path = os.path.join(ROOT, relpath.lstrip('/'))
     os.makedirs(os.path.dirname(path), exist_ok=True)
@@ -341,78 +359,129 @@ def doc_href(entry):
 # --------------------------------------------------------------------------
 
 def page_home():
-    body = f"""<section class="hero">
+    hero_class, hero_style = photo('home-hero')
+    body = f"""<section class="hero{hero_class}"{hero_style}>
   <div class="wrap">
-    <p class="eyebrow">Broker-dealer &middot; {CITY}, Kansas &middot; Since 2005</p>
-    <h1>Brokerage, in plain terms.</h1>
-    <p class="lede">{FIRM} is a full-service broker-dealer in {CITY}, {STATE}.
-       We have been registered with the SEC since {SEC_REGISTERED_SINCE} and we
-       work through independent representatives in {STATE_COUNT} states.</p>
+    <p class="eyebrow">Member FINRA &middot; Member SIPC &middot; Since 2005</p>
+    <h1>Your partner in financial independence.</h1>
+    <p class="lede">{FIRM} is a full-service investment firm in {CITY}, {STATE},
+       working through independent representatives in {STATE_COUNT} states.</p>
     <div class="btns">
-      <a class="btn btn-gold" href="/services/">What we offer</a>
-      <a class="btn btn-ghost" href="/contact/">Talk to someone</a>
+      <a class="btn btn-gold" href="/services/">Explore our services</a>
+      <a class="btn btn-ghost" href="/contact/">Contact a representative</a>
     </div>
   </div>
 </section>
 
 <section class="sec">
   <div class="wrap">
-    <h2>Two ways in</h2>
-    <p>Most of what a firm like ours publishes is written for one of two people.
-       Pick the one you are.</p>
-    <div class="doors">
-      <div class="door">
-        <h3>You are looking for a representative</h3>
-        <p>Call the home office and we will put you with a representative who is
-           licensed in your state. Before that conversation, it is worth knowing
-           what we offer, how we are paid, and what our filings say about us.</p>
-        <div class="btns">
-          <a class="btn btn-solid" href="/services/">What we offer</a>
-        </div>
+    <p class="eyebrow eyebrow-light">What we offer</p>
+    <h2>A full range of investment products</h2>
+    <p>Your representative will help you work out which of these fits what you
+       are trying to do. What any individual representative can place depends on
+       the securities licenses they hold.</p>
+    <div class="tiles">
+      <div class="tile">
+        <h3>Funds and ETFs</h3>
+        <p>Mutual funds, exchange-traded funds and real estate investment
+           trusts, across every major asset class. All sold by prospectus.</p>
       </div>
-      <div class="door">
-        <h3>You are a registered representative</h3>
-        <p>We are a small firm that clears through a large one. Representatives
-           keep their independence and deal directly with a home office that
-           answers. If you are weighing a move, start here.</p>
-        <div class="btns">
-          <a class="btn btn-solid" href="/brokers/">For representatives</a>
-        </div>
+      <div class="tile">
+        <h3>Retirement and education</h3>
+        <p>Traditional, Roth, Educational and self-directed IRAs, rollovers and
+           conversions, SEP and SIMPLE plans, 401(k), 403(b) and 529 plans.</p>
       </div>
+      <div class="tile">
+        <h3>Individual securities</h3>
+        <p>Stocks, corporate and municipal bonds, U.S. government securities,
+           brokered certificates of deposit, and options.</p>
+      </div>
+      <div class="tile">
+        <h3>Annuities and insurance</h3>
+        <p>Fixed, variable and equity-indexed annuities, and variable universal
+           life. Long-term contracts — read the prospectus first.</p>
+      </div>
+    </div>
+    <div class="btns" style="margin-top:2.5rem">
+      <a class="btn btn-outline" href="/services/">See the full catalog</a>
     </div>
   </div>
 </section>
 
 <section class="sec sec-warm">
+  <div class="wrap split">
+    <div>
+      <p class="eyebrow eyebrow-light">About us</p>
+      <h2>A small firm, by choice</h2>
+      <p>{FIRM} has been registered with the SEC since {SEC_REGISTERED_SINCE}
+         and incorporated in {INCORPORATED}. The home office is on Iron Avenue
+         in {CITY}, and you can reach it on one number.</p>
+      <p>Our representatives are independent. They run their own practices and
+         know their own clients, and the firm exists to support that rather than
+         to manage it. Clearing, custody and execution run through
+         {CLEARING_FIRM}, so the infrastructure behind your account is not the
+         size of the firm in front of it.</p>
+      <p>Regardless of the financial goals you are working toward, our
+         registered representatives have the licensing and the products to help
+         you pursue them.</p>
+    </div>
+    <div>
+      <div class="orgs">
+        <div class="org">
+          <span class="org-mark">FINRA</span>
+          <span class="org-name">Financial Industry Regulatory Authority</span>
+          <span class="org-role">Member</span>
+        </div>
+        <div class="org">
+          <span class="org-mark">SIPC</span>
+          <span class="org-name">Securities Investor Protection Corporation</span>
+          <span class="org-role">Member</span>
+        </div>
+        <div class="org">
+          <span class="org-mark">MSRB</span>
+          <span class="org-name">Municipal Securities Rulemaking Board</span>
+          <span class="org-role">Registered</span>
+        </div>
+      </div>
+      <dl class="deflist deflist-tight">
+        <div><dt>CRD</dt><dd>{CRD}</dd></div>
+        <div><dt>SEC</dt><dd>{SEC_NO}</dd></div>
+        <div><dt>Public record</dt><dd><a href="{BROKERCHECK}" rel="noopener">FINRA BrokerCheck</a></dd></div>
+      </dl>
+      <p class="note" style="margin-top:1.5rem">Registration is a filing
+         requirement. It does not mean the SEC, FINRA or any other regulator has
+         approved, endorsed or passed on the merits of this firm or anything it
+         offers.</p>
+    </div>
+  </div>
+</section>
+
+<section class="sec">
   <div class="wrap">
-    <h2>How we are paid</h2>
-    <p>This is the part most brokerage websites leave to a footnote. It decides
-       whether we are the right firm for you, so it belongs near the top.</p>
-    <div class="cards">
+    <p class="eyebrow eyebrow-light">How we are paid</p>
+    <h2>Three things worth knowing before you call</h2>
+    <p>Most brokerage websites leave these to a footnote. They decide whether we
+       are the right firm for you, so they are on the front page instead.</p>
+    <div class="cards cards-3">
       <div class="card">
         <span class="num">01</span>
         <h3>By commission, per transaction</h3>
-        <p>You pay us when you buy or sell — a commission, concession, or
-           mark-up. There is no ongoing fee for having an account with us.</p>
+        <p>You pay us when you buy or sell. Because of that, we make more when
+           there are more transactions — which is a conflict of interest between
+           us and you, and we would rather say so here than bury it.</p>
       </div>
       <div class="card">
         <span class="num">02</span>
-        <h3>Which creates a conflict</h3>
-        <p>Because we are paid per transaction, we make more when there are more
-           transactions. Our Form CRS names that conflict plainly, and so do we.</p>
-      </div>
-      <div class="card">
-        <span class="num">03</span>
         <h3>We do not monitor your account</h3>
         <p>We are a brokerage, not an investment adviser. You make the final
            decision on every purchase and sale, and we do not review your
            holdings on a continuing basis unless we agree in writing to.</p>
       </div>
       <div class="card">
-        <span class="num">04</span>
-        <h3>No proprietary products</h3>
-        <p>We do not manufacture investments, run sales contests, or work from a
-           limited menu — as stated in our filed Form CRS.</p>
+        <span class="num">03</span>
+        <h3>Nothing we are paid extra to sell</h3>
+        <p>No proprietary products, no sales contests, and no limited menu —
+           the same statement we make to the SEC in our Form CRS.</p>
       </div>
     </div>
     <p class="note">The specifics — the range our commissions fall in, the
@@ -425,33 +494,18 @@ def page_home():
 
 {disclosure_band()}
 
-<section class="sec">
-  <div class="wrap">
-    <h2>How the firm is registered</h2>
-    <p>These are identifiers and filings, not credentials. They tell you where
-       to look us up, and they are the same numbers a regulator would use.</p>
-    <dl class="deflist">
-      <div><dt>Legal name</dt><dd>{FIRM}</dd></div>
-      <div><dt>CRD number</dt><dd>{CRD}</dd></div>
-      <div><dt>SEC number</dt><dd>{SEC_NO}</dd></div>
-      <div><dt>Registered with</dt><dd>The U.S. Securities and Exchange Commission, since {SEC_REGISTERED_SINCE}</dd></div>
-      <div><dt>Member of</dt><dd>FINRA and SIPC. Registered with the MSRB for municipal securities business</dd></div>
-      <div><dt>Incorporated</dt><dd>{INCORPORATED}</dd></div>
-      <div><dt>Home office</dt><dd>{STREET}, {CITY}, {STATE} {ZIP}</dd></div>
-      <div><dt>Clearing firm</dt><dd>{CLEARING_FIRM}, which holds customer securities and cash</dd></div>
-      <div><dt>Public record</dt><dd><a href="{BROKERCHECK}" rel="noopener">FINRA BrokerCheck</a> — our registrations, our representatives, and our disciplinary history</dd></div>
-    </dl>
-    <p class="note">Registration is a filing requirement. It does not mean the
-       SEC, FINRA or any other regulator has approved, endorsed or passed on the
-       merits of this firm or anything it offers.</p>
-  </div>
-</section>
-
 {closer('Start with a conversation',
         'Call the home office and we will pair you with a representative licensed in '
         'your state. There is no form to fill in first.',
         f'<a class="btn btn-gold" href="tel:{PHONE_URI}">{PHONE}</a>'
         '<a class="btn btn-ghost" href="/contact/">All contact details</a>')}
+
+<section class="sec sec-tight rule-top">
+  <div class="wrap">
+    <p class="aside">Are you a registered representative weighing a move?
+       <a href="/brokers/">See what association with {SHORT} involves</a>.</p>
+  </div>
+</section>
 """
     return shell(
         f'{SHORT} — a full-service broker-dealer in {CITY}, {STATE}',
