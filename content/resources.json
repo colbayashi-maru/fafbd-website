@@ -1,0 +1,95 @@
+{
+  "_comment": [
+    "Third-party tools for /resources/.",
+    "",
+    "This list is deliberately short. The page it replaced carried 78 links",
+    "assembled around 2006; an audit on 2026-09-25 found roughly a third dead",
+    "and a further dozen silently redirecting to a different company than the",
+    "one named in the link text — AIM to Invesco, American Funds to Capital",
+    "Group, Heritage to Eagle Asset, SunAmerica to Corebridge. A link labelled",
+    "with one firm's name that lands on another firm's sales page is a",
+    "communication with the public that the firm cannot stand behind.",
+    "",
+    "So the rule for this file: only regulators, government sites, and tools",
+    "the firm is prepared to be associated with. No fund-company home pages —",
+    "a representative sends the prospectus that applies. Every entry carries",
+    "the date it was last verified. Re-check them annually and update 'checked'."
+  ],
+
+  "groups": [
+    {
+      "title": "Check us, and anyone else",
+      "links": [
+        {
+          "label": "FINRA BrokerCheck",
+          "note": "Our registration, our representatives, and our disciplinary history.",
+          "url": "https://brokercheck.finra.org/firm/summary/139107",
+          "checked": "2026-09-25"
+        },
+        {
+          "label": "Investor.gov — research before you invest",
+          "note": "The SEC's free tool for checking a firm or an individual.",
+          "url": "https://www.investor.gov/introduction-investing/getting-started/researching-investments",
+          "checked": "2026-09-25"
+        },
+        {
+          "label": "SEC Investment Adviser Public Disclosure",
+          "note": "For advisory firms, which are registered separately from broker-dealers.",
+          "url": "https://adviserinfo.sec.gov/",
+          "checked": "2026-09-25"
+        }
+      ]
+    },
+    {
+      "title": "Understanding what you hold",
+      "links": [
+        {
+          "label": "FINRA Fund Analyzer",
+          "note": "Compares the real cost of funds and ETFs over the time you expect to hold them.",
+          "url": "https://tools.finra.org/fund_analyzer/",
+          "checked": "2026-09-25"
+        },
+        {
+          "label": "MSRB EMMA",
+          "note": "Official disclosures and trade prices for municipal securities.",
+          "url": "https://emma.msrb.org/",
+          "checked": "2026-09-25"
+        },
+        {
+          "label": "SIPC — what is protected",
+          "note": "What SIPC covers if a brokerage fails, and what it does not.",
+          "url": "https://www.sipc.org/for-investors/what-sipc-protects",
+          "checked": "2026-09-25"
+        }
+      ]
+    },
+    {
+      "title": "Calculators",
+      "links": [
+        {
+          "label": "Compound interest calculator",
+          "note": "Investor.gov. Shows what costs and time do to a balance.",
+          "url": "https://www.investor.gov/financial-tools-calculators/calculators/compound-interest-calculator",
+          "checked": "2026-09-25"
+        },
+        {
+          "label": "Savings bond calculator",
+          "note": "TreasuryDirect. Values paper series EE, E, I and savings notes.",
+          "url": "https://www.treasurydirect.gov/savings-bonds/savings-bond-calculator/",
+          "checked": "2026-09-25"
+        }
+      ]
+    },
+    {
+      "title": "Reading",
+      "links": [
+        {
+          "label": "FINRA investor insights",
+          "note": "Plain-language pieces on products, fraud and market events.",
+          "url": "https://www.finra.org/investors/insights",
+          "checked": "2026-09-25"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<!--
+  Source of public/assets/og-image.png. Kept outside public/ so it is never
+  served as a page of the site. Rendered at 1200x630 — see README.
+
+  The card travels alone, with no room for the limits that must accompany a
+  statement about registration. So it carries the firm's name, what it is,
+  where it is, and the two public identifiers. It makes no regulatory claim
+  beyond membership, which is a fact, and no claim at all about what the firm
+  can do for anyone.
+-->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500&family=Inter:wght@400;500;600;700&display=swap">
+<style>
+  * { box-sizing: border-box; margin: 0; }
+  html, body { width: 1200px; height: 630px; }
+  body {
+    background: #0B1F3A;
+    background-image: linear-gradient(105deg, #0B1F3A 0%, #0B1F3A 50%, #16365C 100%);
+    color: #fff;
+    font-family: Inter, sans-serif;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 72px 80px;
+    position: relative;
+    overflow: hidden;
+  }
+  .rule { position: absolute; left: 0; top: 0; width: 100%; height: 6px; background: #C9A84C; }
+  img { width: 440px; display: block; }
+  h1 {
+    font-family: "Playfair Display", Georgia, serif;
+    font-weight: 500;
+    font-size: 62px;
+    line-height: 1.1;
+    letter-spacing: -0.015em;
+    max-width: 17ch;
+  }
+  .meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    border-top: 1px solid rgba(255,255,255,0.22);
+    padding-top: 24px;
+  }
+  .meta p { font-size: 19px; color: rgba(255,255,255,0.78); }
+  .ids {
+    font-size: 15px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #F0B743;
+    text-align: right;
+    line-height: 1.7;
+  }
+</style>
+</head>
+<body>
+  <div class="rule"></div>
+  <img src="/assets/faf-logo-whitetext.svg" alt="">
+  <h1>Brokerage, in plain terms.</h1>
+  <div class="meta">
+    <p>A full-service broker-dealer in Salina, Kansas.</p>
+    <div class="ids">
+      Member FINRA &middot; SIPC<br>
+      CRD 139107 &middot; SEC 8-67191
+    </div>
+  </div>
+</body>
+</html>

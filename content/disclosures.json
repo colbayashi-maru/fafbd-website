@@ -1,0 +1,113 @@
+{
+  "_comment": [
+    "The regulatory document roster for /disclosures/.",
+    "Files under kind 'pdf' are served from public/assets/docs/ on our own domain.",
+    "Never overwrite a PDF in place — netlify.toml caches that folder for a week.",
+    "Add the replacement under a new dated filename and point 'file' at it.",
+    "Files under kind 'link' are third-party investor education, not our documents."
+  ],
+  "firm_documents": [
+    {
+      "title": "Form CRS — Customer Relationship Summary",
+      "note": "What we offer, how we are paid, our conflicts, and our disciplinary history. The SEC requires us to give this to every retail investor.",
+      "kind": "pdf",
+      "file": "FAF-Form-CRS.pdf"
+    },
+    {
+      "title": "Privacy Policy",
+      "note": "What personal information we collect, why, and with whom we share it.",
+      "kind": "pdf",
+      "file": "FAF-Privacy-Policy.pdf"
+    },
+    {
+      "title": "Customer Identification Program Notice",
+      "note": "The identifying information federal law requires us to collect before opening an account.",
+      "kind": "pdf",
+      "file": "FAF-Customer-Identification-Program-Notice.pdf"
+    },
+    {
+      "title": "Business Continuity Plan",
+      "note": "How we intend to keep serving accounts through a significant business disruption.",
+      "kind": "pdf",
+      "file": "FAF-Business-Continuity-Plan.pdf"
+    },
+    {
+      "title": "Legal Disclosure",
+      "note": "Terms governing the use of this website and the information on it.",
+      "kind": "pdf",
+      "file": "FAF-Legal-Disclosure.pdf"
+    },
+    {
+      "title": "Account Protection",
+      "note": "SIPC coverage and what it does and does not protect against.",
+      "kind": "pdf",
+      "file": "FAF-Account-Protection.pdf"
+    },
+    {
+      "title": "Outside Business Activity of First Asset Representatives",
+      "note": "Business our representatives conduct away from the firm, and what that means for you.",
+      "kind": "pdf",
+      "file": "FAF-Outside-Business-Activity.pdf"
+    },
+    {
+      "title": "Margin Disclosures",
+      "note": "The risks of borrowing against securities held in an account.",
+      "kind": "pdf",
+      "file": "FAF-Margin-Disclosures.pdf"
+    },
+    {
+      "title": "Investment Objectives — Definitions",
+      "note": "What each objective on the new account form means.",
+      "kind": "pdf",
+      "file": "FAF-Investment-Objectives-Definitions.pdf"
+    }
+  ],
+  "education": [
+    {
+      "title": "Working With Your Financial Professional",
+      "note": "Questions worth asking, and what the answers tell you.",
+      "kind": "pdf",
+      "file": "FAF-Working-With-Your-Financial-Professional.pdf"
+    },
+    {
+      "title": "Mutual Fund Investing",
+      "note": "Share classes, expenses, and how the costs compound.",
+      "kind": "pdf",
+      "file": "FAF-Mutual-Fund-Investing.pdf"
+    },
+    {
+      "title": "Mutual Fund Breakpoints",
+      "note": "Sales-charge discounts you may be entitled to, and how to claim them.",
+      "kind": "pdf",
+      "file": "FAF-Mutual-Fund-Breakpoints.pdf"
+    },
+    {
+      "title": "Mutual Funds — the basics",
+      "note": "Investor.gov, from the SEC's Office of Investor Education.",
+      "kind": "link",
+      "url": "https://www.investor.gov/introduction-investing/investing-basics/investment-products/mutual-funds-and-exchange-traded-funds-etfs/mutual-funds",
+      "checked": "2026-09-25"
+    },
+    {
+      "title": "Why Broker-Dealers Ask for Personal Information",
+      "note": "Investor.gov explanation of the information we are required to collect.",
+      "kind": "link",
+      "url": "https://www.investor.gov/introduction-investing/investing-basics/glossary/broker-dealers-why-they-ask-personal-information",
+      "checked": "2026-09-25"
+    },
+    {
+      "title": "Variable Annuities — weighing an exchange",
+      "note": "FINRA investor alert.",
+      "kind": "link",
+      "url": "https://www.finra.org/investors/insights/exchange-variable-annuity",
+      "checked": "2026-09-25"
+    },
+    {
+      "title": "Equity-Indexed Annuities: A Complex Choice",
+      "note": "FINRA investor alert.",
+      "kind": "link",
+      "url": "https://www.finra.org/investors/insights/complicated-risks-and-rewards-indexed-annuities",
+      "checked": "2026-09-25"
+    }
+  ]
+}

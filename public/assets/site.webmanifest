@@ -1,0 +1,19 @@
+{
+  "name": "First Asset Financial Inc.",
+  "short_name": "First Asset Financial",
+  "icons": [
+    {
+      "src": "/assets/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    },
+    {
+      "src": "/assets/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ],
+  "theme_color": "#0B1F3A",
+  "background_color": "#F5F3EE",
+  "display": "browser"
+}

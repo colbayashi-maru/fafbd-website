@@ -1,0 +1,302 @@
+# firstassetfinancial.com
+#
+# There is no build step at deploy time. build.py runs locally and the
+# generated HTML is committed, so the host only has to serve public/.
+
+[build]
+  publish = "public"
+  command = ""
+
+# ---------------------------------------------------------------------------
+# KEEP THE STAGING URL OUT OF SEARCH UNTIL CUTOVER
+#
+# DELETE THE BLOCK BELOW BEFORE POINTING DNS AT THIS SITE.
+#
+# It is a blanket noindex over every path. If it survives the cutover the real
+# site stays invisible to Google indefinitely, silently, with nothing on the
+# page to show for it. This is the single easiest step to forget and the most
+# expensive one to discover late.
+# ---------------------------------------------------------------------------
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Robots-Tag = "noindex, nofollow"
+
+# ---------------------------------------------------------------------------
+# Security headers
+#
+# The pages load Google Fonts and nothing else third-party, so a real CSP is
+# possible. If anything is ever added — analytics, a chat widget, an embedded
+# form — its origin has to be named here IN THE SAME COMMIT. A script-src that
+# does not name the origin blocks the tag silently: no error a visitor or an
+# editor would ever see, just a site that quietly does nothing.
+# ---------------------------------------------------------------------------
+[[headers]]
+  for = "/*"
+  [headers.values]
+    Content-Security-Policy = """
+      default-src 'self';
+      script-src 'self' 'unsafe-inline';
+      style-src 'self' 'unsafe-inline' https://fonts.googleapis.com;
+      font-src 'self' https://fonts.gstatic.com;
+      img-src 'self' data:;
+      object-src 'none';
+      frame-ancestors 'none';
+      base-uri 'self';
+      form-action 'self';
+      upgrade-insecure-requests"""
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    Permissions-Policy = "geolocation=(), microphone=(), camera=(), payment=(), interest-cohort=()"
+    Strict-Transport-Security = "max-age=31536000; includeSubDomains; preload"
+    X-Frame-Options = "DENY"
+
+[[headers]]
+  for = "/assets/*.css"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/assets/*.svg"
+  [headers.values]
+    Cache-Control = "public, max-age=604800"
+
+[[headers]]
+  for = "/assets/*.png"
+  [headers.values]
+    Cache-Control = "public, max-age=604800"
+
+# One week, not a year. A filing that is replaced must reach readers quickly —
+# which is also why a replacement gets a NEW filename rather than overwriting
+# an existing one. An overwritten document would sit stale in caches while the
+# superseded version was still being served.
+[[headers]]
+  for = "/assets/docs/*"
+  [headers.values]
+    Cache-Control = "public, max-age=604800"
+    X-Content-Type-Options = "nosniff"
+
+# ---------------------------------------------------------------------------
+# Redirects from the previous site
+#
+# The site being replaced is a PHP site whose URLs all end in .php. Netlify
+# paths are case-sensitive, so each one is listed in both the lower-case form
+# the site linked and the capitalized form that turns up in logs.
+# ---------------------------------------------------------------------------
+
+[[redirects]]
+  from = "/index.php"
+  to = "/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/services.php"
+  to = "/services/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/important_info.php"
+  to = "/disclosures/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/investor_forms.php"
+  to = "/forms/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/investor_resources.php"
+  to = "/resources/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/prospective_brokers.php"
+  to = "/brokers/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/contact.php"
+  to = "/contact/"
+  status = 301
+  force = true
+
+# The Base44 prototype's paths, in case anything was shared from it.
+[[redirects]]
+  from = "/investor-information"
+  to = "/services/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/important-information"
+  to = "/disclosures/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/investor-forms"
+  to = "/forms/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/investor-resources"
+  to = "/resources/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/prospective-brokers"
+  to = "/brokers/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/contact"
+  to = "/contact/"
+  status = 301
+  force = true
+
+# ---------------------------------------------------------------------------
+# The old PDF paths.
+#
+# Every filing and form the previous site published lived under
+# /assets/pdf/. Those URLs are in emails, in account packets and in
+# search results, so each one is redirected to its copy in /assets/docs/.
+# ---------------------------------------------------------------------------
+
+[[redirects]]
+  from = "/assets/pdf/privacy_policy.pdf"
+  to = "/assets/docs/FAF-Privacy-Policy.pdf"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/assets/pdf/customer_identification_program_notice.pdf"
+  to = "/assets/docs/FAF-Customer-Identification-Program-Notice.pdf"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/assets/pdf/business_continuity_plan.pdf"
+  to = "/assets/docs/FAF-Business-Continuity-Plan.pdf"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/assets/pdf/legal_statement.pdf"
+  to = "/assets/docs/FAF-Legal-Disclosure.pdf"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/assets/pdf/account_protection.pdf"
+  to = "/assets/docs/FAF-Account-Protection.pdf"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/assets/pdf/mutual_fund_breakpoints.pdf"
+  to = "/assets/docs/FAF-Mutual-Fund-Breakpoints.pdf"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/assets/pdf/outside_business_activity.pdf"
+  to = "/assets/docs/FAF-Outside-Business-Activity.pdf"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/assets/pdf/working_with_your_financial_professional.pdf"
+  to = "/assets/docs/FAF-Working-With-Your-Financial-Professional.pdf"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/assets/pdf/investment_obj_definitions.pdf"
+  to = "/assets/docs/FAF-Investment-Objectives-Definitions.pdf"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/assets/pdf/margin_disclosure.pdf"
+  to = "/assets/docs/FAF-Margin-Disclosures.pdf"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/assets/pdf/mutual_fund_investing.pdf"
+  to = "/assets/docs/FAF-Mutual-Fund-Investing.pdf"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/assets/pdf/new_accout_form_finra-fillable.pdf"
+  to = "/assets/docs/FAF-New-Account-Form.pdf"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/assets/pdf/faf_mf_clnt_disclsr_form_faf.pdf"
+  to = "/assets/docs/FAF-Mutual-Fund-Investment-Form.pdf"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/assets/pdf/faf_mf_dealer_change_form.pdf"
+  to = "/assets/docs/FAF-Mutual-Fund-Change-of-Dealer-Form.pdf"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/assets/pdf/VA1_and_VA3.pdf"
+  to = "/assets/docs/FAF-Variable-Annuity-Forms.pdf"
+  status = 301
+  force = true
+
+# The old site linked Form CRS with a space in the filename. The Base44
+# prototype linked /assets/pdf/form_crs.pdf, which never existed and 404'd.
+# Both go to the copy we host.
+[[redirects]]
+  from = "/assets/pdf/CRS form.pdf"
+  to = "/assets/docs/FAF-Form-CRS.pdf"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/assets/pdf/CRS%20form.pdf"
+  to = "/assets/docs/FAF-Form-CRS.pdf"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/assets/pdf/form_crs.pdf"
+  to = "/assets/docs/FAF-Form-CRS.pdf"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/form-crs"
+  to = "/form-crs/"
+  status = 301
+  force = true
+
+# Anything else still under the old PDF folder lands on the disclosures page
+# rather than a 404, because a customer following a link from a printed packet
+# is looking for a document and the page lists all of them.
+[[redirects]]
+  from = "/assets/pdf/*"
+  to = "/disclosures/"
+  status = 301
+
+[[redirects]]
+  from = "/*.php"
+  to = "/404.html"
+  status = 404
