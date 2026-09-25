@@ -85,6 +85,15 @@ a:hover { color: var(--brand); }
 .hdr .wrap {
   display: flex; align-items: center; justify-content: space-between;
   gap: 1.5rem; min-height: 5rem;
+  /* The header runs the full width rather than sitting in the body's 72rem
+     container. A capped header leaves the logo and the nav marooned in the
+     middle of a wide screen with the bar's colour running past them on both
+     sides; full-bleed makes the bar frame the page instead.
+
+     The footer deliberately keeps the container. Both ends edge-to-edge
+     reads as a layout with no margins at all. */
+  max-width: none;
+  padding: 0 3rem;
 }
 .hdr-logo { display: inline-flex; align-items: center; }
 .hdr-logo img { width: 232px; display: block; }
@@ -112,7 +121,7 @@ a:hover { color: var(--brand); }
 }
 
 @media (max-width: 67rem) {
-  .hdr .wrap { min-height: 4.25rem; }
+  .hdr .wrap { min-height: 4.25rem; padding: 0 var(--gutter); }
   .hdr-logo img { width: 184px; }
   .menu-btn { display: block; }
   .nav {
