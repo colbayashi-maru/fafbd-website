@@ -159,7 +159,7 @@ FOOTER = f"""<footer class="ftr">
       <p>This site is published for residents of the United States. {SHORT} and
          its representatives may transact business only in states in which they
          are registered or exempt from registration.</p>
-      <p>&copy; {{year}} {FIRM}. All rights reserved.</p>
+      <p>&copy; {{year}} {FIRM} All rights reserved.</p>
     </div>
   </div>
 </footer>"""
@@ -838,7 +838,7 @@ def page_brokers():
        in {STATE_COUNT} states. Our representatives are independent: they run
        their own practices, and the home office exists to support that rather
        than to manage it. Clearing, custody and execution run through
-       {CLEARING_FIRM}.</p>
+       {CLEARING_FIRM}</p>
 
     <div class="cards">
       <div class="card">
