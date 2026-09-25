@@ -4,18 +4,22 @@
    ------------------------------------------------------------------ */
 
 :root {
-  --navy:        #0B1F3A;
-  --navy-deep:   #071729;
-  --navy-soft:   #16365C;
-  --gold:        #C9A84C;   /* accent on dark grounds */
-  --gold-bright: #F0B743;   /* the mark's own gold; logo only */
-  --gold-deep:   #7A5F16;   /* accent as text on light grounds (AA) */
+  /* The two brand colours, exactly as the supplied artwork defines them.
+     The Base44 prototype used a navy (#0B1F3A) that appears nowhere in the
+     brand files; this is the real slate. */
+  --brand:       #2B3439;
+  --brand-deep:  #1E2529;   /* footer ground — derived, darker */
+  --brand-soft:  #3D4A51;   /* gradients and hovers — derived, lighter */
+  --gold:        #F0B743;   /* the mark's own gold. 6.99:1 on --brand */
+  --gold-deep:   #7A5F16;   /* the same accent as TEXT on light grounds.
+                               #F0B743 on paper is 1.64:1 and unreadable;
+                               this is 5.45:1 on paper, 5.08:1 on warm */
   --paper:       #F5F3EE;
   --paper-warm:  #EFEBE2;
   --rule:        #D8D3C7;
-  --ink:         #1A222E;
-  --ink-soft:    #4A5665;
-  --ink-faint:   #6B7683;
+  --ink:         #1F2629;
+  --ink-soft:    #4C575C;
+  --ink-faint:   #6C777C;
   --white:       #FFFFFF;
 
   --display: "Playfair Display", Georgia, "Times New Roman", serif;
@@ -44,7 +48,7 @@ body {
 img, svg { max-width: 100%; height: auto; }
 
 a { color: var(--gold-deep); text-underline-offset: 0.18em; }
-a:hover { color: var(--navy); }
+a:hover { color: var(--brand); }
 
 :focus-visible {
   outline: 3px solid var(--gold);
@@ -56,7 +60,7 @@ a:hover { color: var(--navy); }
 
 .skip {
   position: absolute; left: -9999px; top: 0;
-  background: var(--navy); color: var(--white);
+  background: var(--brand); color: var(--white);
   padding: 0.75rem 1.25rem; z-index: 100;
 }
 .skip:focus { left: 0; }
@@ -64,8 +68,8 @@ a:hover { color: var(--navy); }
 /* ---------------------------------------------------------- header */
 
 .hdr {
-  background: var(--navy);
-  border-bottom: 1px solid rgba(240, 183, 67, 0.28);
+  background: var(--brand);
+  border-bottom: 1px solid rgba(240, 183, 67, 0.30);
 }
 .hdr .wrap {
   display: flex; align-items: center; justify-content: space-between;
@@ -86,7 +90,7 @@ a:hover { color: var(--navy); }
   border-bottom: 2px solid transparent;
 }
 .nav a:hover { color: var(--white); border-bottom-color: var(--gold); }
-.nav a[aria-current="page"] { color: var(--gold-bright); border-bottom-color: var(--gold); }
+.nav a[aria-current="page"] { color: var(--gold); border-bottom-color: var(--gold); }
 
 .menu-btn {
   display: none;
@@ -104,8 +108,8 @@ a:hover { color: var(--navy); }
     display: none;
     position: absolute; left: 0; right: 0; top: 100%;
     flex-direction: column; align-items: stretch; gap: 0;
-    background: var(--navy-deep);
-    border-bottom: 1px solid rgba(240,183,67,0.28);
+    background: var(--brand-deep);
+    border-bottom: 1px solid rgba(240,183,67,0.30);
     padding: 0.5rem 0 1rem;
     z-index: 50;
   }
@@ -121,7 +125,7 @@ a:hover { color: var(--navy); }
 /* ------------------------------------------------------------ hero */
 
 .hero {
-  background: var(--navy);
+  background: var(--brand);
   color: var(--white);
   padding: 5.5rem 0 5rem;
   position: relative;
@@ -130,7 +134,7 @@ a:hover { color: var(--navy); }
 .hero::after {
   content: "";
   position: absolute; inset: 0;
-  background: linear-gradient(105deg, var(--navy) 0%, var(--navy) 52%, var(--navy-soft) 100%);
+  background: linear-gradient(105deg, var(--brand) 0%, var(--brand) 52%, var(--brand-soft) 100%);
   opacity: 0.85;
   z-index: 0;
 }
@@ -140,7 +144,7 @@ a:hover { color: var(--navy); }
 .eyebrow {
   font-size: 0.75rem; font-weight: 600;
   letter-spacing: 0.18em; text-transform: uppercase;
-  color: var(--gold-bright);
+  color: var(--gold);
   margin: 0 0 1.25rem;
 }
 .hero h1 {
@@ -163,7 +167,7 @@ a:hover { color: var(--navy); }
 
 /* page head — interior pages */
 .phead {
-  background: var(--navy);
+  background: var(--brand);
   color: var(--white);
   padding: 4rem 0 3.5rem;
 }
@@ -196,22 +200,22 @@ a:hover { color: var(--navy); }
   border: 1px solid transparent;
   transition: background-color 0.15s, color 0.15s, border-color 0.15s;
 }
-.btn-gold { background: var(--gold); color: var(--navy-deep); border-color: var(--gold); }
-.btn-gold:hover { background: var(--gold-bright); border-color: var(--gold-bright); color: var(--navy-deep); }
+.btn-gold { background: var(--gold); color: var(--brand-deep); border-color: var(--gold); }
+.btn-gold:hover { background: var(--gold); border-color: var(--gold); color: var(--brand-deep); }
 .btn-ghost { background: transparent; color: var(--white); border-color: rgba(255,255,255,0.45); }
 .btn-ghost:hover { border-color: var(--white); background: rgba(255,255,255,0.08); color: var(--white); }
-.btn-navy { background: var(--navy); color: var(--white); border-color: var(--navy); }
-.btn-navy:hover { background: var(--navy-soft); border-color: var(--navy-soft); color: var(--white); }
-.btn-outline { background: transparent; color: var(--navy); border-color: var(--rule); }
-.btn-outline:hover { border-color: var(--navy); background: var(--white); color: var(--navy); }
+.btn-solid { background: var(--brand); color: var(--white); border-color: var(--brand); }
+.btn-solid:hover { background: var(--brand-soft); border-color: var(--brand-soft); color: var(--white); }
+.btn-outline { background: transparent; color: var(--brand); border-color: var(--rule); }
+.btn-outline:hover { border-color: var(--brand); background: var(--white); color: var(--brand); }
 
 /* -------------------------------------------------------- sections */
 
 .sec { padding: 4.5rem 0; }
 .sec-warm { background: var(--paper-warm); }
-.sec-navy { background: var(--navy); color: var(--white); }
-.sec-navy h2, .sec-navy h3 { color: var(--white); }
-.sec-navy p { color: rgba(255,255,255,0.82); }
+.sec-brand { background: var(--brand); color: var(--white); }
+.sec-brand h2, .sec-brand h3 { color: var(--white); }
+.sec-brand p { color: rgba(255,255,255,0.82); }
 .sec-tight { padding: 3rem 0; }
 
 h2 {
@@ -221,7 +225,7 @@ h2 {
   line-height: 1.2;
   letter-spacing: -0.01em;
   margin: 0 0 1.25rem;
-  color: var(--navy);
+  color: var(--brand);
 }
 h3 {
   font-family: var(--display);
@@ -229,7 +233,7 @@ h3 {
   font-size: 1.25rem;
   line-height: 1.3;
   margin: 0 0 0.625rem;
-  color: var(--navy);
+  color: var(--brand);
 }
 .sec p, .prose p { max-width: var(--measure); }
 .sec > .wrap > p:last-child, .prose p:last-child { margin-bottom: 0; }
@@ -258,8 +262,8 @@ h3 {
   letter-spacing: 0.05em;
 }
 .card p { margin: 0; color: var(--ink-soft); font-size: 0.9875rem; }
-.sec-navy .card { background: rgba(255,255,255,0.05); border-color: rgba(255,255,255,0.16); }
-.sec-navy .card .num { color: var(--gold-bright); }
+.sec-brand .card { background: rgba(255,255,255,0.05); border-color: rgba(255,255,255,0.16); }
+.sec-brand .card .num { color: var(--gold); }
 
 /* two front doors */
 .doors { display: grid; grid-template-columns: repeat(auto-fit, minmax(19rem, 1fr)); gap: 1.5rem; margin-top: 2.5rem; }
@@ -282,7 +286,7 @@ h3 {
   padding: 1.125rem 0;
   border-top: 1px solid var(--rule);
 }
-.deflist dt { font-weight: 600; font-size: 0.9375rem; color: var(--navy); }
+.deflist dt { font-weight: 600; font-size: 0.9375rem; color: var(--brand); }
 .deflist dd { margin: 0; color: var(--ink-soft); font-size: 0.9875rem; }
 @media (max-width: 40rem) {
   .deflist div { grid-template-columns: 1fr; gap: 0.35rem; }
@@ -337,7 +341,7 @@ h3 {
   text-decoration: none;
   color: var(--ink);
 }
-.doc:hover { color: var(--navy); background: var(--white); }
+.doc:hover { color: var(--brand); background: var(--white); }
 .doc .n { font-family: var(--display); color: var(--gold-deep); font-size: 0.9375rem; }
 .doc .t { font-weight: 500; }
 .doc .t small { display: block; font-weight: 400; color: var(--ink-faint); font-size: 0.875rem; margin-top: 0.2rem; }
@@ -406,7 +410,7 @@ h3 {
   font-family: var(--display);
   font-size: 1.5rem;
   text-decoration: none;
-  color: var(--navy);
+  color: var(--brand);
 }
 .big-link:hover { color: var(--gold-deep); }
 
@@ -417,7 +421,7 @@ h3 {
 /* ---------------------------------------------------------- footer */
 
 .ftr {
-  background: var(--navy-deep);
+  background: var(--brand-deep);
   color: rgba(255,255,255,0.7);
   padding: 3.5rem 0 2rem;
   font-size: 0.9375rem;
@@ -438,7 +442,7 @@ h3 {
   font-family: var(--body);
   font-size: 0.6875rem; font-weight: 700;
   letter-spacing: 0.16em; text-transform: uppercase;
-  color: var(--gold-bright);
+  color: var(--gold);
   margin: 0 0 1rem;
 }
 .ftr ul { list-style: none; margin: 0; padding: 0; }

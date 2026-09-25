@@ -100,7 +100,7 @@ FOOTER = f"""<footer class="ftr">
     <div class="ftr-top">
       <div>
         <div class="ftr-logo">
-          <img src="/assets/faf-logo-compact.svg" alt="{SHORT}" width="208" height="33">
+          <img src="/assets/faf-lockup-reversed.svg" alt="{SHORT}" width="208" height="39">
         </div>
         <p>A full-service broker-dealer in {CITY}, {STATE}, working through
            independent representatives.</p>
@@ -182,7 +182,7 @@ ORG_JSONLD = json.dumps({
     "name": FIRM,
     "alternateName": SHORT,
     "url": SITE + "/",
-    "logo": SITE + "/assets/faf-logo-whitetext.svg",
+    "logo": SITE + "/assets/faf-lockup-reversed.svg",
     "telephone": PHONE,
     "faxNumber": FAX,
     "email": EMAIL,
@@ -243,7 +243,7 @@ def shell(title, desc, body, canonical, current=''):
 <header class="hdr">
   <div class="wrap">
     <a class="hdr-logo" href="/">
-      <img src="/assets/faf-logo-compact.svg" alt="{SHORT} — home" width="240" height="38">
+      <img src="/assets/faf-lockup-reversed.svg" alt="{SHORT} — home" width="240" height="45">
     </a>
     <button class="menu-btn" type="button" aria-expanded="false" aria-controls="nav">Menu</button>
     <nav class="nav" id="nav" aria-label="Main">
@@ -298,7 +298,7 @@ def disclosure_band(extra=''):
 
 
 def closer(heading, text, buttons):
-    return f"""<section class="sec sec-navy">
+    return f"""<section class="sec sec-brand">
   <div class="wrap narrow">
     <h2>{heading}</h2>
     <p>{text}</p>
@@ -367,7 +367,7 @@ def page_home():
            licensed in your state. Before that conversation, it is worth knowing
            what we offer, how we are paid, and what our filings say about us.</p>
         <div class="btns">
-          <a class="btn btn-navy" href="/services/">What we offer</a>
+          <a class="btn btn-solid" href="/services/">What we offer</a>
         </div>
       </div>
       <div class="door">
@@ -376,7 +376,7 @@ def page_home():
            keep their independence and deal directly with a home office that
            answers. If you are weighing a move, start here.</p>
         <div class="btns">
-          <a class="btn btn-navy" href="/brokers/">For representatives</a>
+          <a class="btn btn-solid" href="/brokers/">For representatives</a>
         </div>
       </div>
     </div>
@@ -662,7 +662,7 @@ def page_form_crs():
        from all of that, and whether the firm or its people have a legal or
        disciplinary history.</p>
     <div class="btns" style="margin-top:2rem">
-      <a class="btn btn-navy" href="{FORM_CRS_PDF}">Read our Form CRS (PDF)</a>
+      <a class="btn btn-solid" href="{FORM_CRS_PDF}">Read our Form CRS (PDF)</a>
     </div>
     <p class="note">You can also request a paper copy at no charge by calling
        <a href="tel:{PHONE_URI}">{PHONE}</a>, and you can compare ours against
@@ -742,7 +742,7 @@ def page_forms():
 
 {disclosure_band()}
 
-<section class="sec sec-navy">
+<section class="sec sec-brand">
   <div class="wrap narrow">
     <h2>Why we ask for so much</h2>
     <p>The account form asks about your income, your net worth, your experience
@@ -973,7 +973,7 @@ def page_404():
     body = f"""<section class="sec mid">
   <div class="wrap narrow">
     <p class="eyebrow" style="color:var(--gold-deep)">Error 404</p>
-    <h1 style="font-family:var(--display);font-weight:500;font-size:clamp(2rem,4vw,2.75rem);line-height:1.15;margin:0 0 1rem;color:var(--navy)">
+    <h1 style="font-family:var(--display);font-weight:500;font-size:clamp(2rem,4vw,2.75rem);line-height:1.15;margin:0 0 1rem;color:var(--brand)">
       That page is not here.</h1>
     <p>It may have moved when this site was rebuilt. Everything the old site
        published still exists somewhere below.</p>
@@ -1026,7 +1026,7 @@ def webmanifest():
             {"src": "/assets/favicon.svg", "sizes": "any", "type": "image/svg+xml"},
             {"src": "/assets/icon-512.png", "sizes": "512x512", "type": "image/png"},
         ],
-        "theme_color": "#0B1F3A",
+        "theme_color": "#2B3439",
         "background_color": "#F5F3EE",
         "display": "browser",
     }, indent=2) + '\n'

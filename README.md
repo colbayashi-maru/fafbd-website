@@ -56,6 +56,8 @@ file in this repository and should be read before any copy changes.
 | `public/assets/` | Stylesheet, logos, icons, social card. |
 | `public/assets/docs/` | The filings and account forms, self-hosted. |
 | `build.py` | Generates every page. |
+| `brand/` | The supplied logo files. **Never edited.** |
+| `tools/make-assets.py` | Derives every logo and icon in `public/assets/` from `brand/`. |
 | `content/COMPLIANCE.md` | The rule-by-rule review. Read this first. |
 | `content/disclosures.json` | The regulatory document roster. |
 | `content/forms.json` | The account-form roster. |
@@ -145,49 +147,69 @@ redirects in `netlify.toml`. Use `netlify dev` if you need those.
 
 ## Design
 
-The palette is the navy and gold of the firm's own mark (`#0B1F3A`, `#F0B743`)
-on warm paper, with the gold darkened to `#7A5F16` wherever it has to carry text
-on a light ground — the mark's own gold fails contrast at body size. Type is
-Playfair Display for what the firm commits to and Inter for everything that is
-interface, both from Google Fonts. Both were the prototype's choices and are kept
-deliberately, so the rebuild is not a surprise to anyone who saw it.
+The palette is the two colours of the firm's own mark: the brand slate
+`#2B3439` and the gold `#F0B743`, on warm paper.
+
+**Note what this corrects.** The Base44 prototype was built in a navy,
+`#0B1F3A`, that appears nowhere in the brand files — it is a colour the
+generator chose. The supplied artwork is drawn in `#2B3439`, a dark slate with a
+green cast, and the site now uses that. It is a quieter, warmer colour than the
+navy and it sits better against the paper.
+
+The one derived value is `--gold-deep`, `#7A5F16`. The brand gold reads at
+6.99:1 on the slate and is used as supplied there, but on paper it is 1.64:1 —
+invisible. Anywhere the accent has to carry text on a light ground, the darkened
+version is used instead: 5.45:1 on paper, 5.08:1 on the warm band.
+
+Type is Playfair Display for what the firm commits to and Inter for everything
+that is interface, both from Google Fonts. Both were the prototype's choices and
+are kept deliberately, so the rebuild is not a surprise to anyone who saw it.
 
 ### The logo
 
-Everything is derived from the two supplied files, so there is no hand-traced art
-anywhere:
+`brand/` holds the four files as the designer supplied them and is **never
+edited**. Everything under `public/assets/` that carries the mark is generated
+from them by `tools/make-assets.py`, so there is no hand-traced art anywhere:
 
-| File | What it is |
+```bash
+python3 tools/make-assets.py
+```
+
+| Source in `brand/` | Supplied as |
 |---|---|
-| `faf-logo-compact.svg` | **What the site actually uses.** Mark plus FIRST ASSET FINANCIAL, no membership line, on the navy header and footer |
-| `faf-logo-whitetext.svg` | The full supplied lockup, membership line included. Used on the social card and right for anything 400px or wider |
-| `faf-logo-compact-navy.svg` | The compact lockup for light grounds. Not currently used — kept for print and any future light header |
-| `faf-logo-navytext.svg` | The full lockup for light grounds |
-| `faf-icon-white.svg` | The supplied mark alone |
-| `faf-mark-navy.svg` | The mark for light grounds |
-| `favicon.svg` | The mark on its own navy ground, padded into a 512-square so a round icon mask does not crop the wings |
+| `faf-lockup.svg` | Mark plus FIRST ASSET FINANCIAL, no membership line |
+| `faf-lockup-with-memberships.svg` | The same with MEMBER SIPC \| FINRA beneath |
+| `faf-mark.svg` | The winged A alone |
+| `faf-wordmark.svg` | The type alone |
+
+| Generated in `public/assets/` | What it is |
+|---|---|
+| `faf-lockup-reversed.svg` | **What the header and footer actually use.** The lockup recoloured for the slate ground |
+| `faf-lockup.svg` | The same for light grounds — print, a document, a future light header |
+| `faf-lockup-full-reversed.svg` | The membership lockup, reversed. **The social card uses this** |
+| `faf-lockup-full.svg` | The membership lockup for light grounds |
+| `faf-mark.svg`, `faf-mark-reversed.svg` | The mark alone, both grounds |
+| `faf-wordmark.svg` | The type alone |
+| `favicon.svg` | The mark on its own slate ground, padded into a 512-square so a round icon mask does not crop the wings |
 | `favicon-32.png`, `apple-touch-icon.png`, `icon-512.png` | Rendered from `favicon.svg`, for clients that will not take an SVG icon |
 
-**Why the site drops the membership line.** The supplied lockup sets
-"MEMBER SIPC | FINRA" at roughly a tenth the cap height of the name. At the
-200–240px the header and footer can spare, that line is below the size anyone can
-read — and it forces FIRST ASSET FINANCIAL small to make room for text nobody is
-reading. The compact lockup is the same artwork with the viewBox cropped at
-y=206, which cuts cleanly between the wordmark and the membership line. No paths
-were edited.
+The only change the script makes to the artwork is colour: `#2b3439` becomes
+white for the reversed variants. **The gold is never touched** — it reads at
+6.99:1 on the slate, so there is no reason to.
 
-Nothing is lost by dropping it: the footer of every page states the FINRA and
-SIPC membership in full, in a sentence, where it can actually be read — which is
-what Rule 2210(d)(3) is interested in anyway.
+**Which lockup goes where.** The membership line is set at roughly a tenth the
+cap height of the name. At the 208–240px the header and footer can spare, it is
+below the size anyone can read, so those use the lockup without it. The social
+card runs the logo at 440px, where the line is legible, so it uses the full one.
+Roughly 400px is the crossover.
 
-The full lockup is not deleted, and it is the right one above about 400px wide,
-where the membership line becomes legible again — the social card, print, a
-slide. Switching back is two `img` tags in `build.py` and two widths in the
-stylesheet.
+Nothing is lost in the header by dropping that line: the footer of every page
+states the FINRA and SIPC membership in full, in a sentence, where it can
+actually be read — which is what Rule 2210(d)(3) is interested in anyway.
 
-To regenerate the rasters after a logo change, render `favicon.svg` at 512px and
-downsample — the commands are the same headless-Chrome pattern as the social
-image above.
+To regenerate the rasters after a brand revision, replace the file in `brand/`,
+re-run the script, then render `favicon.svg` at 512px and downsample — the
+commands are the same headless-Chrome pattern as the social image above.
 
 ### No photography, by decision
 
@@ -203,8 +225,8 @@ would be sitting on a regulated firm's website.
 So the design carries its weight with type, rule and colour instead, and the
 pages are faster for it. **If real photography is ever commissioned**, the
 obvious slot is behind `.hero` on the home page, as a CSS background under a
-navy scrim — the pattern the Your IA site uses, which is worth copying because a
-missing file degrades to the plain navy ground rather than to a broken image.
+slate scrim — the pattern the Your IA site uses, which is worth copying because a
+missing file degrades to the plain slate ground rather than to a broken image.
 What to shoot: the actual office, the actual people, in Salina.
 
 ## Known gaps
