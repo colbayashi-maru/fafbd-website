@@ -32,7 +32,12 @@
 
 *, *::before, *::after { box-sizing: border-box; }
 
-html { -webkit-text-size-adjust: 100%; }
+html {
+  -webkit-text-size-adjust: 100%;
+  /* Clears the sticky header when a #fragment is followed. */
+  scroll-padding-top: 6rem;
+}
+@media (max-width: 67rem) { html { scroll-padding-top: 5.25rem; } }
 
 body {
   margin: 0;
@@ -70,6 +75,12 @@ a:hover { color: var(--brand); }
 .hdr {
   background: var(--brand);
   border-bottom: 1px solid rgba(240, 183, 67, 0.30);
+  position: sticky;
+  top: 0;
+  /* Above the hero's photo and scrim layers (0 and 1) and above the mobile
+     nav panel (50), below the skip link (100). */
+  z-index: 60;
+  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.18), 0 6px 20px rgba(30, 37, 41, 0.10);
 }
 .hdr .wrap {
   display: flex; align-items: center; justify-content: space-between;
@@ -113,7 +124,6 @@ a:hover { color: var(--brand); }
     padding: 0.5rem 0 1rem;
     z-index: 50;
   }
-  .hdr { position: relative; }
   .nav.open { display: flex; }
   .nav a {
     padding: 0.85rem var(--gutter);
