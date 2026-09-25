@@ -441,20 +441,19 @@ def page_home():
   <div class="wrap split">
     <div>
       <p class="eyebrow eyebrow-light">About us</p>
-      <h2>A small firm, by choice</h2>
-      <p>{FIRM} has been registered with the SEC since {SEC_REGISTERED_SINCE}
-         and incorporated in {INCORPORATED}. The home office is on Iron Avenue
-         in {CITY}, and you can reach it on one number.</p>
-      <p>Our representatives are independent. They run their own practices and
-         know their own clients, and the firm exists to support that rather than
-         to manage it. Clearing, custody and execution run through
+      <h2>The firm behind the representative</h2>
+      <p>{FIRM} has been in {CITY}, Kansas since 2005 and registered with the
+         SEC since {SEC_REGISTERED_SINCE}. The person you deal with is a
+         representative, and that is how the firm is built: they are
+         independent, they own their practices, and they keep their own
+         clients.</p>
+      <p>What the home office does is hold the registration, supervise the
+         business, and give every representative and every client one telephone
+         number that reaches it. Clearing, custody and execution run through
          {CLEARING_FIRM}, so the infrastructure behind your account is not the
          size of the firm in front of it.</p>
-      <p>In 2026 we narrowed what the firm does to annuities and variable life
-         insurance, and gave up the rest of the securities business. A smaller
-         firm doing fewer things is easier to supervise and easier to be a
-         customer of. If you are looking for mutual funds, ETFs or individual
-         securities, we are not the right firm and we will tell you so.</p>
+      <p>Our securities business is {WHAT_WE_PLACE}, placed in
+         {STATE_COUNT} states.</p>
     </div>
     <div>
       <div class="orgs">
