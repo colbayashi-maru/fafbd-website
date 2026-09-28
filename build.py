@@ -92,11 +92,11 @@ ASSET_V = _asset_version()
 # The left group, beside the logo. Contact is not here — it is the action on
 # the right, the way copper.com puts Login and its buttons there.
 NAV = [
-    ('/services/', 'What We Offer'),
+    ('/services/', 'What we offer'),
     ('/disclosures/', 'Disclosures'),
     ('/forms/', 'Forms'),
     ('/resources/', 'Resources'),
-    ('/brokers/', 'Representatives'),
+    ('/brokers/', 'For representatives'),
 ]
 
 

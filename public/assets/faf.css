@@ -84,7 +84,7 @@ a:hover { color: var(--brand); }
 }
 .hdr .wrap {
   display: flex; align-items: center; justify-content: space-between;
-  gap: 1.5rem; min-height: 5rem;
+  gap: 1.5rem; min-height: 4.75rem;
   /* The header runs the full width rather than sitting in the body's 72rem
      container. A capped header leaves the logo and the nav marooned in the
      middle of a wide screen with the bar's colour running past them on both
@@ -96,7 +96,7 @@ a:hover { color: var(--brand); }
   padding: 0 3rem;
 }
 .hdr-logo { display: inline-flex; align-items: center; }
-.hdr-logo img { width: 232px; display: block; }
+.hdr-logo img { width: 184px; display: block; }
 
 /* The bar splits the way copper.com's does: the logo, then the menu items
    immediately beside it on the left, and the actions pushed to the far right.
@@ -107,25 +107,33 @@ a:hover { color: var(--brand); }
   gap: 2rem;
   margin-left: 2.5rem;
 }
-.nav-main { display: flex; align-items: center; gap: 1.75rem; }
-.nav-actions { display: flex; align-items: center; gap: 1.25rem; }
+.nav-main { display: flex; align-items: center; gap: 1.875rem; }
+.nav-actions { display: flex; align-items: center; gap: 1.5rem; flex: none; }
+.nav-actions > * { flex: none; }
 
 .nav-tel {
   white-space: nowrap;
   font-variant-numeric: tabular-nums;
 }
-.nav a {
-  color: rgba(255,255,255,0.86);
-  font-size: 0.8125rem;
-  font-weight: 500;
-  letter-spacing: 0.09em;
-  text-transform: uppercase;
+/* Nav type sits in the same register as copper.com's: near body size,
+   regular weight, sentence case, no tracking. The small uppercase letter-
+   spaced treatment this replaced is legible but stiff, and it made an
+   eight-item bar read as a legal notice rather than navigation. */
+.nav-main a,
+.nav-tel {
+  color: rgba(255,255,255,0.88);
+  font-size: 0.9375rem;
+  font-weight: 400;
+  letter-spacing: normal;
+  text-transform: none;
   text-decoration: none;
-  padding: 0.35rem 0;
+  padding: 0.4rem 0;
   border-bottom: 2px solid transparent;
+  transition: color 0.15s, border-color 0.15s;
 }
-.nav a:hover { color: var(--white); border-bottom-color: var(--gold); }
-.nav a[aria-current="page"] { color: var(--gold); border-bottom-color: var(--gold); }
+.nav-main a:hover,
+.nav-tel:hover { color: var(--white); border-bottom-color: var(--gold); }
+.nav-main a[aria-current="page"] { color: var(--gold); border-bottom-color: var(--gold); }
 
 .menu-btn {
   display: none;
@@ -137,7 +145,7 @@ a:hover { color: var(--brand); }
 
 @media (max-width: 67rem) {
   .hdr .wrap { min-height: 4.25rem; padding: 0 var(--gutter); }
-  .hdr-logo img { width: 184px; }
+  .hdr-logo img { width: 160px; }
   .menu-btn { display: block; }
   .nav {
     display: none;
@@ -292,9 +300,11 @@ a:hover { color: var(--brand); }
   transition: background-color 0.15s, color 0.15s, border-color 0.15s;
 }
 .btn-sm {
-  padding: 0.7rem 1.25rem;
-  font-size: 0.75rem;
-  letter-spacing: 0.08em;
+  padding: 0.6rem 1.4rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  letter-spacing: normal;
+  text-transform: none;
   white-space: nowrap;
 }
 .btn-gold { background: var(--gold); color: var(--brand-deep); border-color: var(--gold); }
