@@ -14,9 +14,9 @@
     "which is the document that governs. Every entry carries the date it was",
     "last verified. Re-check them annually and update 'checked'.",
     "",
-    "Revised 2026-09-25 for the scope change: the fund cost analyzer and the",
-    "municipal securities tool came off, because the firm no longer places",
-    "either. See COMPLIANCE.md, 'The scope change'."
+    "either. See COMPLIANCE.md, 'The scope change'.",
+    "Revised 2026-10-01: the FINRA Fund Analyzer is back with mutual funds.",
+    "The municipal securities tool stays off — the firm places none."
   ],
   "groups": [
     {
@@ -45,6 +45,12 @@
     {
       "title": "Understanding what you are being offered",
       "links": [
+        {
+          "label": "FINRA Fund Analyzer",
+          "note": "Compares what a fund actually costs over the time you expect to hold it, across share classes. The single most useful tool on this page.",
+          "url": "https://tools.finra.org/fund_analyzer/",
+          "checked": "2026-10-01"
+        },
         {
           "label": "FINRA on annuities",
           "note": "The whole family — variable, fixed and indexed — and the questions to ask about each.",

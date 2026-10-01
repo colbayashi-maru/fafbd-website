@@ -4,12 +4,17 @@
 open, and all eleven sit in the firm's own filings and records rather than in
 website copy.**
 
-**Two of them are urgent.** The firm restricted its securities business in
-September 2026 to annuities, RILAs and variable universal life — see
-"The scope change" below — and as a result the Form CRS posted on this site now
-describes a business the firm does not conduct, in addition to giving an address
-that was already wrong. Both corrections belong in one amendment, and Rule
-17a-14 gives thirty days.
+**Three of them are urgent.**
+
+The firm restricted its securities business in September 2026 to annuities,
+RILAs and variable universal life, then **added mutual funds back on 1 October
+2026**. The second move needs a FINRA Rule 1017 answer before this site is
+published — see "Mutual funds added back" below — because the site now
+advertises a product line the membership agreement may not yet permit.
+
+Separately, the Form CRS posted on this site describes a business the firm does
+not conduct and gives an address that was already wrong. Both corrections belong
+in one amendment, and Rule 17a-14 gives thirty days.
 
 This records a rule-by-rule review of the site's copy and the changes made as a
 result. It is not a legal opinion and it is not a substitute for review by the
@@ -242,6 +247,100 @@ explains, in plain terms, why the old list is gone.
   regardless.
 - **The state limitation** in the footer of every page — the firm is licensed in
   23 states and the site is visible everywhere.
+
+---
+
+## Mutual funds added back — 1 October 2026
+
+**Mutual funds are back in the firm's securities business.** The scope is now
+four product lines: mutual funds, variable annuities, registered index-linked
+annuities and variable universal life. Individual securities remain out —
+stocks, bonds, ETFs, municipal securities, options and CDs.
+
+This reverses part of the September restriction recorded below. What changed on
+the site, and the one question that has to be answered before it goes live:
+
+### The Rule 1017 question, which is not optional
+
+The September restriction was effected through the firm's FINRA membership
+agreement. **Adding a product line back is a change to that agreement in the
+other direction, and it runs through the same rule.** FINRA Rule 1017 requires a
+continuing membership application — or at minimum a materiality consultation —
+for a material change in business operations, and expanding the permitted
+product set is exactly that.
+
+**Confirm, before this site is published, that the amended membership agreement
+permits mutual funds.** If it does not, every page of this site advertises a
+business the firm is not approved to conduct, which is a 2210(d)(1)(B) problem
+layered on top of a membership problem. This is a worse failure mode than the
+one the September restriction created, because here the site is claiming *more*
+than the agreement allows rather than less.
+
+Two consequences follow if the answer is yes:
+
+- **Supervisory procedures.** Mutual fund sales carry their own supervisory
+  obligations the variable-contract business does not — share-class
+  suitability, breakpoint delivery, and switching or exchange review. Confirm
+  the written supervisory procedures were restored along with the product.
+- **Registered representative licensing.** A Series 6 covers investment company
+  products and variable contracts; the firm's Form CRS notes its representatives
+  hold Series 6 or Series 7. Confirm the reps expected to place funds are
+  licensed for them.
+
+### Breakpoints, which is why this product gets special treatment on the site
+
+Mutual fund **breakpoints** are the single most examined item in retail fund
+sales, and the failure mode is not fraud — it is a customer who qualified for a
+discount, was never told, and paid a higher sales charge than they owed.
+
+So the site does three things the rest of the product copy does not:
+
+1. The **home page** tells a reader to ask about breakpoints, in the same note
+   as the IRA warning.
+2. **`/services/`** carries a dedicated note explaining that discounts apply at
+   stated levels, that holdings elsewhere in the same fund family and
+   household purchases can count, that a written commitment to invest more can
+   count, and — the part that matters — **that they are not applied
+   automatically and must be claimed**.
+3. The **breakpoint disclosure PDF** was moved from the education list into
+   **our documents** on `/disclosures/`. It is not background reading; it is a
+   disclosure the firm owes a fund customer, and it belongs with Form CRS and
+   the privacy notice rather than alongside third-party articles.
+
+The share-class question is also added to the list on `/services/`: *"On a fund:
+which share class is this, why that one, and do I qualify for a breakpoint?"*
+
+### What else changed
+
+| | |
+|---|---|
+| `WHAT_WE_PLACE` | now names mutual funds first |
+| `WHAT_WE_ARE` | "offering mutual funds, annuities and variable life insurance" — "specializing in" no longer fits a four-line business |
+| `WHAT_WE_DO_NOT` | **new constant.** The negative statement appears in the footer of every page and on `/services/`; holding it in one place stops the two copies drifting apart, which is exactly how a stale "we do not offer X" survives a scope change |
+| Home page | "Three products" → "Four products"; a mutual fund tile added first, as the most familiar of the four |
+| `/services/` | "The three" → "The four", with a mutual fund group covering share class, breakpoints, expense ratio and back-end loads |
+| Disclosure band | Now names the sales charge and the annual expense ratio alongside the annuity surrender charges |
+| `/forms/` | Mutual Fund Investment Form and Change of Dealer Authorization restored, with a note that the earlier "funds are gone" message no longer applies |
+| `/disclosures/` | Breakpoints restored as a **firm document**; Mutual Fund Investing and the Investor.gov funds page restored as education |
+| `/resources/` | FINRA Fund Analyzer restored — it compares real cost across share classes, which is the tool this product most needs |
+| `/brokers/` | The "your book will not fit here" warning narrowed to individual securities |
+
+**Margin stays off.** The margin disclosure was removed in September and has not
+come back, because the firm offers no margin. Confirm that is still true.
+
+**MSRB stays off.** Mutual funds do not change the municipal securities
+position. See open item B below.
+
+### The Form CRS position improves slightly, and is still wrong
+
+The posted Form CRS lists mutual funds among the firm's retail brokerage
+services, so on that one line the document and the site now agree again.
+
+**It remains materially inaccurate.** It still lists stocks, ETFs, municipal
+securities, options, bonds, government securities, brokered CDs, health savings
+plans and checking accounts — none of which the firm places — and it still gives
+the corporate address as McDonough, GA. Open item A below is unchanged in
+substance and unchanged in urgency.
 
 ---
 
@@ -561,7 +660,12 @@ Two gaps the repository does not close on its own:
       one describes a business the firm no longer conducts. **This is the one
       that cannot ship as it stands.**
 - [ ] **Confirm the amended FINRA membership agreement** permits everything
-      `/services/` describes, RILAs included — scope-change open item C.
+      `/services/` describes — RILAs **and mutual funds**. Adding the fund
+      business back is itself a Rule 1017 matter; see "Mutual funds added
+      back". **This is the one that blocks publication.**
+- [ ] **Confirm the written supervisory procedures for mutual fund sales**
+      were restored with the product — share-class suitability, breakpoint
+      delivery, and switch review.
 - [ ] **Confirm the MSRB registration is withdrawn** — scope-change open item B.
       The reference has already been removed from the site.
 - [ ] **Confirm what happens to legacy mutual fund and margin positions**, and

@@ -32,10 +32,15 @@ domain.
 ## What the firm is, as of September 2026
 
 **First Asset Financial is a limited-scope broker-dealer.** Its securities
-business is variable annuities, registered index-linked annuities (RILAs) and
-variable universal life — and nothing else. It no longer places mutual funds,
-ETFs, stocks, bonds, municipal securities, options or any other individual
-security.
+business is four product lines: mutual funds, variable annuities, registered
+index-linked annuities (RILAs) and variable universal life. It places no
+individual securities of any kind — no stocks, bonds, ETFs, municipal
+securities, options or CDs.
+
+The firm restricted its business in September 2026 to the three variable
+contracts, then added mutual funds back on 1 October 2026. Both moves are
+recorded in the compliance file; the second one raises a FINRA Rule 1017
+question that has to be answered before this site goes live.
 
 That restriction is recent, and it reaches much further through this site than
 a product list. `WHAT_WE_ARE` and `WHAT_WE_PLACE` at the top of `build.py` are
@@ -88,7 +93,7 @@ file in this repository and should be read before any copy changes.
 | Path | Reader |
 |---|---|
 | `/` | Both — states the firm, says how it is paid, then forks |
-| `/services/` | Investors — the three products, what they cost, and brokerage vs. advisory |
+| `/services/` | Investors — the four products, what they cost, and brokerage vs. advisory |
 | `/disclosures/` | Investors, regulators, anyone checking us out |
 | `/form-crs/` | The one document an examiner looks for first |
 | `/forms/` | Customers opening or moving an account |
@@ -114,10 +119,11 @@ constants at the top of `build.py` and are used by the header, the footer, the
 page bodies and the JSON-LD. Change the constant, not the eight places it
 appears.
 
-`WHAT_WE_ARE` and `WHAT_WE_PLACE` are the two that matter most. They are the
-firm's regulatory scope in prose, and they appear in the hero, the footer of
-every page, the JSON-LD and every meta description. **If the membership
-agreement changes again, change them first.**
+`WHAT_WE_ARE`, `WHAT_WE_PLACE` and `WHAT_WE_DO_NOT` are the three that matter
+most. They are the firm's regulatory scope in prose, and they appear in the
+hero, the footer of every page, the JSON-LD and every meta description. The
+negative one exists as a constant so the two places it appears cannot drift
+apart. **If the membership agreement changes again, change them first.**
 
 **Copy changes need a registered principal's approval before they go live**, under
 FINRA Rule 2210(b)(1)(A). Record the approval against the commit hash. A commit

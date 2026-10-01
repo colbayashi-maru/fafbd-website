@@ -58,17 +58,25 @@ STATE_COUNT = '23'
 CLEARING_FIRM = 'Hilltop Securities Inc.'
 PRESIDENT = 'Bob Hamman'
 
-# The firm restricted its securities business in 2026 to annuities, registered
-# index-linked annuities and variable universal life. It no longer places
-# mutual funds, ETFs or individual securities of any kind.
+# The firm's securities business is four product lines: mutual funds, variable
+# annuities, registered index-linked annuities and variable universal life. It
+# places no individual securities of any kind — no stocks, bonds, ETFs,
+# municipal securities, options or CDs.
 #
-# "Full-service" was true of the old business and is not true of this one, so
-# it appears nowhere. These two strings are what replaced it, and they are used
-# in the footer, the hero, the JSON-LD and every meta description — change them
-# here, not in the eight places they appear. See content/COMPLIANCE.md.
-WHAT_WE_ARE = 'a broker-dealer specializing in annuities and variable life insurance'
-WHAT_WE_PLACE = ('variable annuities, registered index-linked annuities and '
-                 'variable universal life')
+# "Full-service" was true of the business before the 2026 restriction and is
+# not true of this one, so it appears nowhere. These strings carry the scope in
+# prose and are used in the footer, the hero, the JSON-LD and every meta
+# description — change them here, not in the eight places they appear.
+# See content/COMPLIANCE.md, "The scope change".
+WHAT_WE_ARE = ('a broker-dealer offering mutual funds, annuities and variable '
+               'life insurance')
+WHAT_WE_PLACE = ('mutual funds, variable annuities, registered index-linked '
+                 'annuities and variable universal life')
+# The negative statement, which is the one a visitor actually needs. Kept as a
+# constant so the two places it appears cannot drift apart.
+WHAT_WE_DO_NOT = ('stocks, bonds, exchange-traded funds, municipal securities, '
+                  'options, certificates of deposit or any other individual '
+                  'security')
 
 FORM_CRS_PDF = '/assets/docs/FAF-Form-CRS.pdf'
 
@@ -180,10 +188,9 @@ FOOTER = f"""<footer class="ftr">
          <a href="{FORM_CRS_PDF}">Form CRS</a> describes both, along with the
          conflicts of interest that apply to us.</p>
       <p><strong>{SHORT} is a limited-scope broker-dealer.</strong> Our
-         securities business is {WHAT_WE_PLACE}. We do not offer mutual funds,
-         exchange-traded funds, stocks, bonds, municipal securities, options or
-         any other individual security. The scope of our registration is on the
-         public record at
+         securities business is {WHAT_WE_PLACE}. We do not offer
+         {WHAT_WE_DO_NOT}. The scope of our registration is on the public
+         record at
          <a href="{BROKERCHECK}" rel="noopener">FINRA BrokerCheck</a>.</p>
       <p>This site is published for residents of the United States. {SHORT} and
          its representatives may transact business only in states in which they
@@ -325,9 +332,12 @@ def disclosure_band(extra=''):
        They carry surrender charges for early withdrawal, ongoing contract and
        rider fees, and tax consequences on early distribution — and the
        guarantees in them depend on the claims-paying ability of the issuing
-       insurance company, not on {SHORT} and not on SIPC. All are sold by
-       prospectus; read it, including the charges and expenses, before you
-       invest. {SHORT} does not provide tax or legal
+       insurance company, not on {SHORT} and not on SIPC.
+       <strong>Mutual funds carry a sales charge that varies by share class, and
+       an annual expense ratio every year you hold them</strong>; breakpoint
+       discounts may reduce that sales charge, and you have to claim them. All
+       are sold by prospectus; read it, including the charges and expenses,
+       before you invest. {SHORT} does not provide tax or legal
        advice.{(' ' + extra) if extra else ''}</p>
   </div>
 </section>"""
@@ -412,12 +422,18 @@ def page_home():
 <section class="sec">
   <div class="wrap">
     <p class="eyebrow eyebrow-light">What we offer</p>
-    <h2>Three products, and we know them well</h2>
+    <h2>Four products, and we know them well</h2>
     <p>We are a limited-scope broker-dealer. That is a deliberate choice: a
        short list is a list your representative can actually know. What any
        individual representative can place depends on the securities and
        insurance licenses they hold.</p>
-    <div class="tiles tiles-3">
+    <div class="tiles">
+      <div class="tile">
+        <h3>Mutual funds</h3>
+        <p>A pooled, professionally managed portfolio you buy shares of. The
+           most familiar of the four, and the one where share class and sales
+           charge matter most. Sold by prospectus.</p>
+      </div>
       <div class="tile">
         <h3>Variable annuities</h3>
         <p>A long-term contract whose value moves with the subaccounts you
@@ -437,12 +453,14 @@ def page_home():
            contract, with the costs of both. Sold by prospectus.</p>
       </div>
     </div>
-    <p class="note">These can be held inside an IRA — traditional, Roth,
+    <p class="note">All four can be held inside an IRA — traditional, Roth,
        rollover, SEP or SIMPLE — or a 403(b), where the tax treatment comes
-       from the account rather than from the contract. <strong>Buying an
+       from the account rather than from what is inside it. <strong>Buying an
        annuity inside an IRA does not add a tax benefit</strong>, because the
        account is already tax-deferred; ask your representative why a
-       particular contract belongs there.</p>
+       particular contract belongs there. <strong>On a mutual fund, ask about
+       breakpoints</strong> — buying more, or committing to, can drop the sales
+       charge, and you have to claim that discount to get it.</p>
     <div class="btns" style="margin-top:2.5rem">
       <a class="btn btn-outline" href="/services/">What each one costs you</a>
     </div>
@@ -545,7 +563,7 @@ def page_home():
 </section>
 """
     return shell(
-        f'{SHORT} — annuities and variable life insurance, {CITY}, {STATE}',
+        f'{SHORT} — mutual funds, annuities and variable life, {CITY}, {STATE}',
         f'{FIRM} is {WHAT_WE_ARE} in {CITY}, {STATE}, registered with the SEC '
         f'and a member of FINRA and SIPC. Our securities business is '
         f'{WHAT_WE_PLACE}.',
@@ -555,7 +573,7 @@ def page_home():
 def page_services():
     body = phead(
         'What we offer',
-        'Three products. What each one is, what it costs you to hold, and what '
+        'Four products. What each one is, what it costs you to hold, and what '
         'has to be true for it to be the right thing to own.',
         'What we offer') + f"""
 
@@ -564,27 +582,37 @@ def page_services():
     <h2>A short list, on purpose</h2>
     <p>{SHORT} is a <strong>limited-scope broker-dealer</strong>. Our securities
        business is {WHAT_WE_PLACE} — and nothing else.</p>
-    <p><strong>We do not offer mutual funds, exchange-traded funds, stocks,
-       bonds, municipal securities, options, certificates of deposit or any
-       other individual security.</strong> We placed most of those once and we
-       no longer do. If that is what you are looking for, we are not the right
-       firm, and the sooner we both know it the better.</p>
-    <p>What is left is a family of contracts that are genuinely complicated —
-       long-dated, layered with optional riders, and expensive to leave early.
-       They suit some people well and other people not at all. A firm that
-       places three products has no excuse for not knowing them thoroughly, and
-       that is the trade we have made.</p>
+    <p><strong>We do not offer {WHAT_WE_DO_NOT}.</strong> We placed most of
+       those once and we no longer do. If that is what you are looking for, we
+       are not the right firm, and the sooner we both know it the better.</p>
+    <p>What is left is one familiar product and three genuinely complicated
+       ones — long-dated contracts, layered with optional riders, and expensive
+       to leave early. They suit some people well and other people not at all.
+       A firm that places four products has no excuse for not knowing them
+       thoroughly, and that is the trade we have made.</p>
   </div>
 </section>
 
 <section class="sec sec-warm">
   <div class="wrap">
-    <h2>The three</h2>
-    <p>All three are securities, all three are sold by prospectus, and in all
-       three the contract guarantees depend on the insurance company that issues
-       them.</p>
+    <h2>The four</h2>
+    <p>All four are securities and all four are sold by prospectus. In the three
+       insurance contracts, the guarantees depend on the claims-paying ability
+       of the company that issues them — a mutual fund carries no such guarantee
+       and makes none.</p>
 
     <div class="catalog">
+      <div class="catgroup">
+        <h3>Mutual funds</h3>
+        <ul>
+          <li>A pooled portfolio, professionally managed <span>You bear the investment risk</span></li>
+          <li>Share class decides what you pay <span>Front-end, back-end or level load</span></li>
+          <li>Breakpoint discounts on larger purchases <span>Ask &mdash; you must claim them</span></li>
+          <li>An annual expense ratio, every year you hold it <span>Deducted from fund assets</span></li>
+          <li>No surrender charge, but a back-end load may apply <span>Check the share class</span></li>
+        </ul>
+      </div>
+
       <div class="catgroup">
         <h3>Variable annuities</h3>
         <ul>
@@ -632,6 +660,14 @@ def page_services():
        the wrong choice — the income guarantees or the death benefit may be the
        reason — but it does mean there has to be a reason, and you are entitled
        to hear it. Ask.</p>
+    <p class="note"><strong>On a mutual fund, ask about breakpoints before you
+       buy.</strong> Most funds reduce the sales charge once your investment
+       passes a stated level, and will count money you already hold in the same
+       fund family, purchases by your household, and a written commitment to
+       invest more over time. Those discounts are not applied automatically —
+       you have to be told about them and claim them. Our
+       <a href="/disclosures/#firm">breakpoint disclosure</a> sets out how they
+       work.</p>
   </div>
 </section>
 
@@ -642,7 +678,8 @@ def page_services():
        business. They are not rhetorical; put them to your representative and
        write the answers down.</p>
     <ul class="linklist">
-      <li>What am I paying, in total, every year — contract charges, rider charges and subaccount fees together?</li>
+      <li>What am I paying, in total, every year — contract charges, rider charges, subaccount fees or an expense ratio?</li>
+      <li>On a fund: which share class is this, why that one, and do I qualify for a breakpoint?</li>
       <li>What does it cost me to get out, and for how many years?</li>
       <li>What exactly does the guarantee guarantee, and who is standing behind it?</li>
       <li>If this is going in an IRA or a 403(b), what am I getting that the account does not already give me?</li>
@@ -855,10 +892,10 @@ def page_forms():
     <p class="note">These are the forms we are asked for most. If you need one
        that is not here, call <a href="tel:{PHONE_URI}">{PHONE}</a> and we will
        send it. The forms are PDFs; some are fillable and all can be printed.</p>
-    <p class="note"><strong>The mutual fund forms are gone.</strong> {SHORT} no
-       longer places mutual funds. If you hold a fund position that was bought
-       through us, call the home office and we will tell you where it sits now
-       and who services it.</p>
+    <p class="note">Mutual fund forms are back on this page. If you were told
+       at any point that {SHORT} no longer places funds, that is no longer the
+       case — call the home office if you need an existing position looked
+       at.</p>
   </div>
 </section>
 
@@ -883,7 +920,8 @@ def page_forms():
 """
     return shell(
         'Account forms',
-        f'New account and annuity forms for {FIRM}, hosted on our own domain.',
+        f'New account, mutual fund and annuity forms for {FIRM}, hosted on our '
+        f'own domain.',
         body, '/forms/', '/forms/')
 
 
@@ -963,10 +1001,9 @@ def page_brokers():
        {CLEARING_FIRM}</p>
     <p><strong>Read this part before anything else.</strong> We are a
        limited-scope broker-dealer. Our securities business is
-       {WHAT_WE_PLACE} — we do not place mutual funds, ETFs or individual
-       securities of any kind. If your book depends on those, this is not a
-       firm you can move it to, and we would rather you knew that on the first
-       call than the fourth.</p>
+       {WHAT_WE_PLACE} — we do not place {WHAT_WE_DO_NOT}. If your book depends
+       on those, this is not a firm you can move it to, and we would rather you
+       knew that on the first call than the fourth.</p>
 
     <div class="cards">
       <div class="card">

@@ -6,11 +6,10 @@
     "Add the replacement under a new dated filename and point 'file' at it.",
     "Files under kind 'link' are third-party investor education, not our documents.",
     "",
-    "The firm restricted its business to annuities, RILAs and variable universal",
-    "life. Documents that only described a business it no longer conducts —",
-    "mutual fund breakpoints, mutual fund investing, margin — were removed from",
-    "this roster on 2026-09-25. The PDFs are still in the repository and in git",
-    "history. See COMPLIANCE.md, 'The scope change', before putting any back."
+    "The mutual fund documents came off on 2026-09-25 with the scope",
+    "restriction and went back on 2026-10-01 when mutual funds returned.",
+    "The margin disclosure stays off: the firm offers no margin.",
+    "See COMPLIANCE.md, 'The scope change'."
   ],
   "firm_documents": [
     {
@@ -60,9 +59,28 @@
       "note": "What each objective on the new account form means.",
       "kind": "pdf",
       "file": "FAF-Investment-Objectives-Definitions.pdf"
+    },
+    {
+      "title": "Mutual Fund Breakpoints",
+      "note": "Sales-charge discounts you may be entitled to, how they are calculated, and how to claim them.",
+      "kind": "pdf",
+      "file": "FAF-Mutual-Fund-Breakpoints.pdf"
     }
   ],
   "education": [
+    {
+      "title": "Mutual Fund Investing",
+      "note": "Share classes, expenses, and how the costs compound.",
+      "kind": "pdf",
+      "file": "FAF-Mutual-Fund-Investing.pdf"
+    },
+    {
+      "title": "Mutual Funds — the basics",
+      "note": "Investor.gov, from the SEC's Office of Investor Education.",
+      "kind": "link",
+      "url": "https://www.investor.gov/introduction-investing/investing-basics/investment-products/mutual-funds-and-exchange-traded-funds-etfs/mutual-funds",
+      "checked": "2026-10-01"
+    },
     {
       "title": "Variable Annuities — the basics",
       "note": "Investor.gov, from the SEC's Office of Investor Education.",
