@@ -39,8 +39,13 @@ securities, options or CDs.
 
 The firm restricted its business in September 2026 to the three variable
 contracts, then added mutual funds back on 1 October 2026. Both moves are
-recorded in the compliance file; the second one raises a FINRA Rule 1017
-question that has to be answered before this site goes live.
+recorded in the compliance file.
+
+**Note what the public record says**, because it does not match: Form BD Item 12
+still lists all ten of the firm's original business lines, mutual funds
+included, and so does Form CRS. Nothing filed reflects a restriction. Settle
+whether the narrowing was ever filed before publishing — it is the first item on
+the pre-cutover checklist.
 
 That restriction is recent, and it reaches much further through this site than
 a product list. `WHAT_WE_ARE` and `WHAT_WE_PLACE` at the top of `build.py` are

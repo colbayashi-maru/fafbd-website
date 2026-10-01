@@ -4,17 +4,20 @@
 open, and all eleven sit in the firm's own filings and records rather than in
 website copy.**
 
-**Three of them are urgent.**
+**Two of them are urgent, and they are the same problem seen from two sides:
+none of the firm's filed documents reflect the restriction the website now
+describes.**
 
-The firm restricted its securities business in September 2026 to annuities,
-RILAs and variable universal life, then **added mutual funds back on 1 October
-2026**. The second move needs a FINRA Rule 1017 answer before this site is
-published — see "Mutual funds added back" below — because the site now
-advertises a product line the membership agreement may not yet permit.
+Form BD Item 12, read from the BrokerCheck report on 1 October 2026, still lists
+all ten of the firm's original business lines. Form CRS still lists the full
+product set and still gives the corporate address as McDonough, GA. The only
+places the restriction appears are this website and the instruction that
+produced it.
 
-Separately, the Form CRS posted on this site describes a business the firm does
-not conduct and gives an address that was already wrong. Both corrections belong
-in one amendment, and Rule 17a-14 gives thirty days.
+Either the restriction has not been filed, or it was a business decision rather
+than a regulatory one. **That distinction changes what has to happen next and
+should be settled before publication.** See "What the public record actually
+says".
 
 This records a rule-by-rule review of the site's copy and the changes made as a
 result. It is not a legal opinion and it is not a substitute for review by the
@@ -260,32 +263,34 @@ stocks, bonds, ETFs, municipal securities, options and CDs.
 This reverses part of the September restriction recorded below. What changed on
 the site, and the one question that has to be answered before it goes live:
 
-### The Rule 1017 question, which is not optional
+### Mutual funds are explicitly permitted — this was checked, not assumed
 
-The September restriction was effected through the firm's FINRA membership
-agreement. **Adding a product line back is a change to that agreement in the
-other direction, and it runs through the same rule.** FINRA Rule 1017 requires a
-continuing membership application — or at minimum a materiality consultation —
-for a material change in business operations, and expanding the permitted
-product set is exactly that.
+**Form BD Item 12 lists "Mutual fund retailer" as a current business line.**
+Read from the FINRA BrokerCheck report for CRD 139107 on 1 October 2026:
 
-**Confirm, before this site is published, that the amended membership agreement
-permits mutual funds.** If it does not, every page of this site advertises a
-business the firm is not approved to conduct, which is a 2210(d)(1)(B) problem
-layered on top of a membership problem. This is a worse failure mode than the
-one the September restriction created, because here the site is claiming *more*
-than the agreement allows rather than less.
+> This firm currently conducts 10 types of businesses.
+>
+> Broker or dealer retailing corporate equity securities over-the-counter ·
+> Broker or dealer selling corporate debt securities · Underwriter or selling
+> group participant (corporate securities other than mutual funds) ·
+> **Mutual fund retailer** · Municipal securities dealer · Municipal securities
+> broker · Broker or dealer selling variable life insurance or annuities · Put
+> and call broker or dealer or option writer · Broker or dealer selling tax
+> shelters or limited partnerships in primary distributions · Private placements
+> of securities
 
-Two consequences follow if the answer is yes:
+The firm's own Form CRS lists mutual funds among its retail brokerage services,
+and notes that representatives hold a Series 6 or Series 7. **A Series 6 is the
+Investment Company and Variable Contracts Products registration — mutual funds
+and variable contracts are the same licensing category**, which is why a firm
+doing variable annuities and VUL but not funds would be the unusual
+configuration, not the other way round.
 
-- **Supervisory procedures.** Mutual fund sales carry their own supervisory
-  obligations the variable-contract business does not — share-class
-  suitability, breakpoint delivery, and switching or exchange review. Confirm
-  the written supervisory procedures were restored along with the product.
-- **Registered representative licensing.** A Series 6 covers investment company
-  products and variable contracts; the firm's Form CRS notes its representatives
-  hold Series 6 or Series 7. Confirm the reps expected to place funds are
-  licensed for them.
+**An earlier draft of this file recorded a FINRA Rule 1017 concern here and
+called it a blocker. That was wrong, and it was reasoned from the description of
+the restriction rather than from the record.** Nothing about mutual funds needs
+a membership application, because nothing about the firm's permission to sell
+them has changed.
 
 ### Breakpoints, which is why this product gets special treatment on the site
 
@@ -341,6 +346,68 @@ securities, options, bonds, government securities, brokered CDs, health savings
 plans and checking accounts — none of which the firm places — and it still gives
 the corporate address as McDonough, GA. Open item A below is unchanged in
 substance and unchanged in urgency.
+
+---
+
+## What the public record actually says — checked 1 October 2026
+
+Pulled from the FINRA BrokerCheck report for CRD 139107
+(`files.brokercheck.finra.org/firm/firm_139107.pdf`), because reasoning about
+the firm's permitted scope from a description of it had already produced one
+wrong conclusion in this file.
+
+### Form BD Item 12 does not reflect the restriction at all
+
+All ten original business lines are still filed and current, including the six
+the firm is said to have given up: corporate equity over-the-counter, corporate
+debt, municipal securities dealer, municipal securities broker, options, tax
+shelters and limited partnerships, and private placements.
+
+**Exchange Act Rule 15b3-1 requires a Form BD amendment promptly when the
+information in it becomes inaccurate.** If the firm has genuinely stopped
+conducting those lines, Item 12 is inaccurate now and an amendment is due.
+
+There is a second reading, and it is the one the record better supports: **the
+restriction was an internal business decision rather than a regulatory filing.**
+Nothing in the public record — not Form BD, not Form CRS, not the firm's own
+live website — shows a narrowing of any kind. If that is what happened, there is
+no amended membership agreement, no Rule 1017 matter in either direction, and
+the only question is whether Item 12 and Form CRS should be brought into line
+with what the firm actually does.
+
+**Settle which of these it is before publishing.** It determines whether the
+remaining work is a Form BD amendment, a Form CRS amendment, or both.
+
+### Municipal securities: the site may be understating the firm
+
+`Municipal securities dealer` and `Municipal securities broker` are both current
+Item 12 business lines, and a firm cannot conduct either without MSRB
+registration. **So the MSRB registration is very likely live, and removing the
+MSRB reference from this site in September was more conservative than the record
+required.**
+
+It stays off for now, because the instruction was that the firm no longer does
+municipal securities business and a site should not advertise a capability the
+firm does not use. But that is now a choice rather than a correction. If the
+firm wants the MSRB reference back, the record supports it — it goes in
+`build.py`'s footer and the `.orgs` list on the home page.
+
+### Confirmed, and now sourced rather than assumed
+
+| Fact on the site | Source |
+|---|---|
+| CRD 139107, SEC 8-67191 | Form BD |
+| 110 E. Iron Ave., Salina, KS 67401 | Form BD main office **and** mailing address |
+| 785-825-5050 | Form BD business telephone |
+| Formed in Kansas, 15 June 2005 | Form BD |
+| 23 states | Form BD. **Wyoming shows a termination requested 31 December 2025** — if that completes, the number becomes 22 and `STATE_COUNT` needs changing |
+| Hilltop Securities Inc. clears | Form BD introducing and industry arrangements: "retained Hilltop Securities Inc to perform 'clearing' services on a fully disclosed basis", effective 10 July 2005, refreshed 12 July 2016. **CRD 6220** |
+| Owner: American Global Wealth Services, Inc | Form BD direct owners, 75% or more, since May 2021 |
+| One SRO | FINRA only. MSRB registration runs through Form A-12 and does not appear here, so this neither confirms nor contradicts it |
+
+One incidental find: the firm archives email through **Global Relay**, effective
+May 2013 — filed two months after the 2013 email-retention sanction. Worth
+knowing when anyone asks what was done about that finding.
 
 ---
 
@@ -452,18 +519,15 @@ dated filename, repoint `content/disclosures.json`, and rebuild.
 Note that the address error in open item 1 below is in the same document. Both
 corrections belong in the same amendment.
 
-### B. MSRB registration has been removed from the site — confirm it is withdrawn
+### B. MSRB — superseded, see "What the public record actually says"
 
-A firm whose securities business is annuities and variable life has no municipal
-securities business, so the MSRB registration would be withdrawn on **Form
-A-15**.
+This item originally read that the MSRB registration "would be withdrawn" and
+asked for confirmation. **Form BD Item 12 shows municipal securities dealer and
+municipal securities broker as current business lines**, so the registration is
+very likely live and the reasoning behind this item was wrong.
 
-The site previously named the MSRB on the home page and in the footer. It has
-been **removed**, because claiming a registration the firm may no longer hold is
-worse than omitting one it does. Confirm the withdrawal is filed. If for some
-reason the firm remains MSRB-registered and wants to say so, it goes back in
-`build.py` and the footer — but it should not, because it would then be
-advertising a capability it does not use.
+The reference stays off the site as a presentation choice, not a correction.
+Decide whether the firm wants it back.
 
 ### C. The FINRA membership agreement
 
@@ -659,13 +723,17 @@ Two gaps the repository does not close on its own:
 - [ ] **Confirm the amended Form CRS** — scope-change open item A. The posted
       one describes a business the firm no longer conducts. **This is the one
       that cannot ship as it stands.**
-- [ ] **Confirm the amended FINRA membership agreement** permits everything
-      `/services/` describes — RILAs **and mutual funds**. Adding the fund
-      business back is itself a Rule 1017 matter; see "Mutual funds added
-      back". **This is the one that blocks publication.**
-- [ ] **Confirm the written supervisory procedures for mutual fund sales**
-      were restored with the product — share-class suitability, breakpoint
-      delivery, and switch review.
+- [ ] **Settle whether the restriction was filed or was an internal business
+      decision** — see "What the public record actually says". Nothing in Form
+      BD or Form CRS reflects it. **This determines everything else on this
+      list**, including whether a Form BD amendment is due under Rule 15b3-1.
+- [ ] **Confirm the written supervisory procedures cover mutual fund sales** —
+      share-class suitability, breakpoint delivery, and switch review.
+- [ ] **Decide whether the MSRB reference goes back on the site.** The record
+      supports it; the instruction not to do municipal business is why it is
+      currently off.
+- [ ] **Watch the Wyoming termination** requested 31 December 2025. If it
+      completes, `STATE_COUNT` in `build.py` drops from 23 to 22.
 - [ ] **Confirm the MSRB registration is withdrawn** — scope-change open item B.
       The reference has already been removed from the site.
 - [ ] **Confirm what happens to legacy mutual fund and margin positions**, and
